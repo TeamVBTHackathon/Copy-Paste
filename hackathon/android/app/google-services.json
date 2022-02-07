@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "909542028912",
+    "project_id": "teamvbt",
+    "storage_bucket": "teamvbt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909542028912:android:7c6e5e65e9cb285c3f66b5",
+        "android_client_info": {
+          "package_name": "com.teamvbt.hackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909542028912-5rtckuiepdugb83511cep11kmblan6ej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamvbt.hackathon",
+            "certificate_hash": "38182bc1a1ff2cbf857c52c2c34f5744e32af74a"
+          }
+        },
+        {
+          "client_id": "909542028912-besuch5s06iq9b0hpss36upg9sn5hh1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4g2z2gvl4euqhTgBKOJ_zRQ87r8Bt5C8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909542028912-besuch5s06iq9b0hpss36upg9sn5hh1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
