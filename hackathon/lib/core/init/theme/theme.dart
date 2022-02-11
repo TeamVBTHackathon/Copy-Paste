@@ -6,35 +6,38 @@ const String FONT_FAMILY = "Poppins";
 final ThemeData redTheme = ThemeData(
   fontFamily: FONT_FAMILY,
   brightness: Brightness.light,
-  primaryColor: const Color(0xffC20003), //xxx
+  primaryColor: const MaterialColor(4289930162, {
+    50: Color(0xfffbeafb),
+    100: Color(0xfff7d4f6),
+    200: Color(0xffeeaaee),
+    300: Color(0xffe67fe5),
+    400: Color(0xffde54dd),
+    500: Color(0xffd52ad4),
+    600: Color(0xffab21aa),
+    700: Color(0xff80197f),
+    800: Color(0xff551155),
+    900: Color(0xff2b082a)
+  }), //xxx
   primaryColorBrightness: Brightness.dark,
-  primaryColorLight: const Color(0xffffcdd2),
-  primaryColorDark: const Color(0xffd32f2f),
+  primaryColorLight: const Color(0xfff7d4f6),
+  primaryColorDark: const Color(0xff80197f),
   canvasColor: const Color(0xfffafafa), //XX
   scaffoldBackgroundColor: const Color(0xfffafafa), //xx
   bottomAppBarColor: const Color(0xffffffff),
   cardColor: const Color(0xffffffff),
 
-  dividerColor: const Color(0xffffffff), //XX
+  dividerColor: const Color(0x1f000000),
   highlightColor: const Color(0x66bcbcbc),
-  splashColor: const Color(0xffE8E8E8),
+  splashColor: const Color(0x66c8c8c8),
   selectedRowColor: const Color(0xfff5f5f5),
   unselectedWidgetColor: const Color(0x8a000000),
   disabledColor: const Color(0x61000000),
-  toggleableActiveColor: const Color(0xffe53935),
-  secondaryHeaderColor: const Color(0xffffebee),
+  toggleableActiveColor: const Color(0xffab21aa),
+  secondaryHeaderColor: const Color(0xfffbeafb),
   backgroundColor: const Color(0xffef9a9a),
-  toggleButtonsTheme: const ToggleButtonsThemeData(
-      fillColor: Color(0xffC20003),
-      textStyle: TextStyle(color: Colors.white),
-      selectedColor: Colors.white),
-  floatingActionButtonTheme:
-      const FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),
-
   dialogBackgroundColor: const Color(0xffffffff),
-
-  indicatorColor: const Color(0xffC20003), //XX
-  hintColor: const Color(0x8a000000), //xx
+  indicatorColor: const Color(0xffd52ad4),
+  hintColor: const Color(0x8a000000),
   errorColor: const Color(0xffd32f2f),
   buttonTheme: const ButtonThemeData(
     textTheme: ButtonTextTheme.normal,
@@ -57,22 +60,21 @@ final ThemeData redTheme = ThemeData(
     focusColor: Color(0x1f000000),
     hoverColor: Color(0x0a000000),
     colorScheme: ColorScheme(
-      primary: Color(0xfff44336),
-      primaryVariant: Color(0xffd32f2f),
-      secondary: Color(0xffC20003), //xx
-      secondaryVariant: Color(0xffd32f2f),
+      primary: Color(0xffb323b2),
+      primaryVariant: Color(0xff80197f),
+      secondary: Color(0xffd52ad4),
+      secondaryVariant: Color(0xff80197f),
       surface: Color(0xffffffff),
-      background: Color(0xffef9a9a),
+      background: Color(0xffeeaaee),
       error: Color(0xffd32f2f),
-      onPrimary: Color(0xffffffff), //xx
-      onSecondary: Color(0xff000000),
+      onPrimary: Color(0xffffffff),
+      onSecondary: Color(0xffffffff),
       onSurface: Color(0xff000000),
       onBackground: Color(0xffffffff),
       onError: Color(0xffffffff),
       brightness: Brightness.light,
     ),
   ),
-
   textTheme: const TextTheme(
     //XX
     headline1: TextStyle(

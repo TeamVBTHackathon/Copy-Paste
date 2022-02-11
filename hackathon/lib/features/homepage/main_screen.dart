@@ -22,9 +22,9 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const SafeArea(
-        child: Center(
-          child: Text('MainScreen'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [],
         ),
       ),
     );
