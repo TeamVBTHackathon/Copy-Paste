@@ -1,7 +1,9 @@
-part of login_view;
+import 'package:flutter/material.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
-class LoginViewAnimation extends StatelessWidget {
-  const LoginViewAnimation({Key? key}) : super(key: key);
+class AnimationWidget extends StatelessWidget {
+  const AnimationWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

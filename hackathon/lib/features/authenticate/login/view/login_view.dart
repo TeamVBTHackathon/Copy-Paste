@@ -6,10 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hackathon/features/authenticate/login/service/login_service.dart';
 import 'package:hackathon/features/authenticate/login/view_model/login_view_model.dart';
 import 'package:hackathon/features/authenticate/register/register_screen.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
+import 'package:hackathon/features/authenticate/widgets/animation_widget.dart';
 
-part 'parts/login_view_animation.dart';
 part 'parts/login_view_body.dart';
 part 'parts/login_view_body2.dart';
 
@@ -28,7 +26,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       body: Stack(
         children: [
-          const LoginViewAnimation(),
+          const AnimationWidget(),
           LoginViewBody2(),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
