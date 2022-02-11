@@ -5,6 +5,7 @@ import 'package:hackathon/features/authenticate/login/login_screen.dart';
 import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 import 'package:hackathon/features/authenticate/register/register_screen.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
+import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/intro_screen.dart';
 
 Future<void> main() async {
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: const IntroScreen(),
+      home: MainPage(),
+      initialRoute: '/',
       //const AuthStateScreen(),
       routes: {
         LoginView.routeName: (ctx) => const LoginView(),
