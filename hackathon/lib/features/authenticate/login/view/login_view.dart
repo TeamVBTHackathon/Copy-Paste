@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/features/authenticate/login/service/login_service.dart';
 import 'package:hackathon/features/authenticate/login/view_model/login_view_model.dart';
-import 'package:hackathon/features/authenticate/register/register_screen.dart';
+import 'package:hackathon/features/authenticate/register/view/register_view.dart';
 import 'package:hackathon/features/authenticate/widgets/animation_widget.dart';
 import 'package:hackathon/features/authenticate/widgets/custom_text_form_field_widget.dart';
 
-part 'parts/login_view_body2.dart';
+part 'parts/login_view_body.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -19,8 +19,6 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final FocusNode _passwordFocusNode = FocusNode();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
           AnimationWidget(
             querterTurns: 4,
           ),
-          LoginViewBody2(),
+          LoginViewBody(),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -37,7 +35,7 @@ class _LoginViewState extends State<LoginView> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushReplacementNamed(RegisterScreen.routeName);
+                        .pushReplacementNamed(RegisterView.routeName);
                   },
                   child: const Text(
                     'Create an account',

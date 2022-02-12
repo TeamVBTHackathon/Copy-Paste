@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hackathon/features/authenticate/login/view/login_view.dart';
-import 'package:hackathon/features/authenticate/register/register_screen.dart';
+import 'package:hackathon/features/authenticate/register/view/register_view.dart';
 import 'package:hackathon/features/landing/service/global_methods.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -144,7 +144,7 @@ class _LandingScreenState extends State<LandingScreen>
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed(RegisterScreen.routeName);
+                      Navigator.of(context).pushNamed(RegisterView.routeName);
                     },
                     child: const Text('Sign Up',
                         style: TextStyle(color: Colors.white)),

@@ -12,18 +12,21 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   bool? isObsecure;
   String Function(String?)? validator;
   bool? isEnabled;
-  CustomTextFormFieldWidget(
-      {Key? key,
-      required this.controller,
-      required this.labelText,
-      required this.icon,
-      this.onEditingComplete,
-      this.errorText,
-      this.isObsecure,
-      this.validator,
-      this.textInputType,
-      this.isEnabled})
-      : super(key: key);
+  IconButton? iconButton;
+
+  CustomTextFormFieldWidget({
+    Key? key,
+    required this.controller,
+    required this.labelText,
+    required this.icon,
+    this.onEditingComplete,
+    this.errorText,
+    this.isObsecure,
+    this.validator,
+    this.textInputType,
+    this.isEnabled,
+    this.iconButton,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
                 color: ThemePurple().theme.errorColor,
               ),
           prefixIcon: icon,
+          suffixIcon: iconButton,
         ),
       ),
     );

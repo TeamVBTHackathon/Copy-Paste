@@ -17,12 +17,9 @@ class RegisterService extends IRegisterService {
       var user = await _auth.createUserWithEmailAndPassword(
           email: model.email, password: model.password);
       var imageUrl;
-      if (model.pickedFile == null) {
-        imageUrl = '';
-      } else {
-        imageUrl =
-            await _storageService.uploadMedia(File(model.pickedFile!.path));
-      }
+
+      imageUrl =
+          await _storageService.uploadMedia(File(model.pickedFile?.path ?? ''));
 
       await _firestore.collection('users').doc(user.user!.uid).set({
         'email': model.email,

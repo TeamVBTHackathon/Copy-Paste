@@ -4,7 +4,6 @@ import 'package:hackathon/core/init/theme/theme.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/authenticate/auth_screen.dart';
 import 'package:hackathon/features/authenticate/login/view/login_view.dart';
-import 'package:hackathon/features/authenticate/register/register_screen.dart';
 import 'package:hackathon/features/authenticate/register/view/register_view.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
@@ -30,7 +29,13 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
       home: HomePageView(),
+=======
+      home: const OnBoardingView(),
+      //MainScreen(),
+
+>>>>>>> b10c60be420e6544095d44425e8e6af36fbc6502
       // initialRoute: '/',
       // //const AuthStateScreen(),
       // routes: {
