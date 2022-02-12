@@ -17,6 +17,8 @@ part 'parts/create_event_content.dart';
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
 
+   static const routeName = '/profile';
+
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }

@@ -27,6 +27,10 @@ TextStyle aboutStyle =
     TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 13);
 
 class EventDetailView extends StatefulWidget {
+  const EventDetailView({Key? key}) : super(key: key);
+
+  static const routeName = '/event-detail';
+
   @override
   State<EventDetailView> createState() => _EventDetailViewState();
 }

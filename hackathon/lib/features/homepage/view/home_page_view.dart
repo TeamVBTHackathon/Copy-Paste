@@ -14,7 +14,10 @@ part 'parts/homepage_view_body.dart';
 part 'parts/homepage_view_bottom.dart';
 
 class HomePageView extends StatelessWidget {
+
   const HomePageView({Key? key}) : super(key: key);
+
+    static const routeName = '/home-page';
 
   @override
   Widget build(BuildContext context) {

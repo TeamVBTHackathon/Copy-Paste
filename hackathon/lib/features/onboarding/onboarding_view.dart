@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
 
 import 'package:hackathon/core/constants/strings/onboarding_strings.dart';
+import 'package:hackathon/features/landing/landing_screen.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
+
+  static const routeName = '/';
 
   @override
   _OnBoardingViewState createState() => _OnBoardingViewState();
@@ -22,7 +26,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     slides.add(
       Slide(
         description: OnboardingStrings.desciption1,
-        pathImage: "asset/images/undraw_Inspiration.png",
+        pathImage: "asset/images/undraw1.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
       ),
@@ -30,7 +34,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     slides.add(
       Slide(
         description: OnboardingStrings.desciption2,
-        pathImage: "undraw_Inspiration.png",
+        pathImage: "asset/images/undraw2.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
       ),
@@ -38,7 +42,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     slides.add(
       Slide(
         description: OnboardingStrings.desciption3,
-        pathImage: "undraw_Inspiration.png",
+        pathImage: "asset/images/undraw3.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
       ),
@@ -46,7 +50,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     slides.add(
       Slide(
         description: OnboardingStrings.desciption4,
-        pathImage: "undraw_Inspiration.png",
+        pathImage: "asset/images/undraw4.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
       ),
@@ -54,10 +58,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   }
 
   void onDonePress() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HomePageView()),
-    );
+    Navigator.pushNamed(context, LandingScreen.routeName);
   }
 
   Widget renderDoneBtn() {

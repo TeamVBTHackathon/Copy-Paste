@@ -4,6 +4,7 @@ import 'package:hackathon/features/messanger/chatPageJson.dart';
 
 class MessangerView extends StatefulWidget {
   const MessangerView({Key? key}) : super(key: key);
+   static const routeName = '/messenger';
 
   @override
   _MessangerViewState createState() => _MessangerViewState();

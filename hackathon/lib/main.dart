@@ -7,10 +7,12 @@ import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 import 'package:hackathon/features/authenticate/register/view/register_view.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
+import 'package:hackathon/features/messanger/messanger_view.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/onboarding_view.dart';
 import 'package:hackathon/features/profile/view/profile_view.dart';
 
+import 'features/createEvent/create_event.dart';
 import 'features/eventDetail/view/event_detail_view.dart';
 
 Future<void> main() async {
@@ -29,21 +31,18 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
-
-      home: MainPage(),
-
-
-
-      //MainScreen(),
-
-
-      // initialRoute: '/',
-      // //const AuthStateScreen(),
-      // routes: {
-      //   LoginView.routeName: (ctx) => const LoginView(),
-      //   RegisterScreen.routeName: (ctx) => const RegisterScreen(),
-      //   LandingScreen.routeName: (ctx) => const LandingScreen(),
-      // },
+      initialRoute: '/',
+      routes: {
+        OnBoardingView.routeName: (ctx) => const OnBoardingView(),
+        LoginView.routeName: (ctx) => const LoginView(),
+        RegisterView.routeName: (ctx) => const RegisterView(),
+        LandingScreen.routeName: (ctx) => const LandingScreen(),
+        HomePageView.routeName: (ctx) => const HomePageView(),
+        EventDetailView.routeName: (ctx) => const EventDetailView(),
+        CreateEvent.routeName: (ctx) => const CreateEvent(),
+        MessangerView.routeName: (ctx) => const MessangerView(),
+        ProfileView.routeName: (ctx) => const ProfileView(),
+      },
     );
   }
 }
