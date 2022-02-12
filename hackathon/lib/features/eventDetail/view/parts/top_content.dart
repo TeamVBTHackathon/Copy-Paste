@@ -3,7 +3,7 @@ part of event_detail_view;
 class TopContentWidget extends StatelessWidget {
  final String _title;
  final String _host;
- TopContentWidget(this._title,this._host);
+ const TopContentWidget(this._title,this._host, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     
@@ -19,7 +19,7 @@ class TopContentWidget extends StatelessWidget {
        // color: redTheme.primaryColor,
         borderRadius: BorderRadius.circular(10),
 
-        image: DecorationImage(
+        image: const DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage("https://www.sermayepiyasalari.net/wp-content/uploads/2021/06/vbt.jpg")
           )
