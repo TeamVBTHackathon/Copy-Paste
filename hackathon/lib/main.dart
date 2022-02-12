@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
-      home: RegisterView(),
+      home: const OnBoardingView(),
+      //MainScreen(),
+
       // initialRoute: '/',
       // //const AuthStateScreen(),
       // routes: {
