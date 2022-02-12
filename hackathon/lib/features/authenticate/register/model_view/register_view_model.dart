@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/features/authenticate/register/model/register_request_model.dart';
 import 'package:hackathon/features/authenticate/register/service/IRegisterService.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegisterViewCubit extends Cubit<RegisterViewState> {
   TextEditingController emailController;
@@ -27,7 +30,7 @@ class RegisterViewCubit extends Cubit<RegisterViewState> {
     this.imageController,
   }) : super(RegisterViewInitial());
 
-  void registerUserModel() {
+  void registerUserModel(XFile img) {
     if (formKey.currentState != null && formKey.currentState!.validate()) {
       changeLoadingView();
       RegisterRequestModel model = RegisterRequestModel(
@@ -35,7 +38,7 @@ class RegisterViewCubit extends Cubit<RegisterViewState> {
         password: passwordController.text,
         name: nameController.text,
         city: addresController.text,
-        image: imageController?.text,
+        pickedFile: img,
       );
       service.register(model);
     } else {
@@ -47,6 +50,15 @@ class RegisterViewCubit extends Cubit<RegisterViewState> {
   void changeLoadingView() {
     isLoading = !isLoading;
     emit(RegisterLoadingState(isValidate: isLoading));
+  }
+
+  var filePickerResult;
+
+  void updateItems(XFile image) {
+    filePickerResult = UpdateFileEducationItems(imageItem: image);
+    emit(UpdateFileEducationItems(imageItem: image));
+
+    registerUserModel(image);
   }
 }
 
@@ -64,4 +76,10 @@ class RegisterLoadingState extends RegisterViewState {
   final bool isValidate;
 
   RegisterLoadingState({required this.isValidate});
+}
+
+class UpdateFileEducationItems extends RegisterViewState {
+  final XFile? imageItem;
+
+  UpdateFileEducationItems({this.imageItem});
 }
