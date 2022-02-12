@@ -5,13 +5,13 @@ import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/authenticate/auth_screen.dart';
 import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 import 'package:hackathon/features/authenticate/register/view/register_view.dart';
-import 'package:hackathon/features/homepage/view/main_screen.dart';
+import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/onboarding_view.dart';
-import 'package:hackathon/features/profile/profile_view.dart';
+import 'package:hackathon/features/profile/view/profile_view.dart';
 
-import 'features/eventDetail/event_detail_view.dart';
+import 'features/eventDetail/view/event_detail_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +29,14 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
+
       home: MainPage(),
+
+
+
+      //MainScreen(),
+
+
       // initialRoute: '/',
       // //const AuthStateScreen(),
       // routes: {

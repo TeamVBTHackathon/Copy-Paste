@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+import 'package:hackathon/features/homepage/view/home_page_view.dart';
+=======
+import 'package:hackathon/core/constants/strings/onboarding_strings.dart';
 import 'package:hackathon/features/homepage/view/main_screen.dart';
+>>>>>>> b10c60be420e6544095d44425e8e6af36fbc6502
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
@@ -19,25 +24,31 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
     slides.add(
       Slide(
-        description: "Team VBT",
+        description: OnboardingStrings.desciption1,
+        pathImage: "asset/images/undraw_Inspiration.png",
+        backgroundColor: Colors.white,
+        styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
+      ),
+    );
+    slides.add(
+      Slide(
+        description: OnboardingStrings.desciption2,
         pathImage: "undraw_Inspiration.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
       ),
     );
-
     slides.add(
       Slide(
-        description: "Team VBT",
+        description: OnboardingStrings.desciption3,
         pathImage: "undraw_Inspiration.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
       ),
     );
-
     slides.add(
       Slide(
-        description: "Team VBT",
+        description: OnboardingStrings.desciption4,
         pathImage: "undraw_Inspiration.png",
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
@@ -48,27 +59,27 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   void onDonePress() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => MainScreen()),
+      MaterialPageRoute(builder: (context) => HomePageView()),
     );
   }
 
   Widget renderDoneBtn() {
     return const Text(
-      "Get Started",
+      OnboardingStrings.buttonDone,
       style: TextStyle(color: Color.fromRGBO(255, 110, 161, 1.0)),
     );
   }
 
   Widget renderSkipBtn() {
     return const Text(
-      "Skip",
+      OnboardingStrings.buttonSkip,
       style: TextStyle(color: Colors.black45),
     );
   }
 
   Widget renderNextBtn() {
     return const Text(
-      "Next",
+      OnboardingStrings.buttonNext,
       style: TextStyle(color: Colors.black45),
     );
   }
@@ -77,16 +88,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return IntroSlider(
       slides: slides,
-      // Dot indicator
-      colorDot: const Color(0x33D02090),
-      colorActiveDot: const Color.fromRGBO(255, 110, 161, 1.0),
+      colorDot: const Color(0x33D02090), //degisecek
+      colorActiveDot: const Color.fromRGBO(255, 110, 161, 1.0), //degisecek
       sizeDot: 13.0,
-      // Skip button
       renderSkipBtn: renderSkipBtn(),
-      // Done button
       renderDoneBtn: renderDoneBtn(),
       onDonePress: onDonePress,
-      // Next button
       renderNextBtn: renderNextBtn(),
     );
   }

@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/core/init/theme/text_theme_light.dart';
 import 'package:hackathon/core/init/theme/theme.dart';
-import 'package:hackathon/features/eventDetail/strings.dart';
 
-part 'parts/topcontent.dart';
-part 'parts/aboutcontent.dart';
-part 'parts/schedulescontent.dart';
-part 'parts/participant.dart';
-part 'parts/joinbutton.dart';
+import '../../../core/constants/strings/event_detail_strings.dart';
+
+part 'parts/about_content.dart';
+part 'parts/join_button.dart';
+part 'parts/participant_content.dart';
+part 'parts/top_content.dart';
+part 'parts/schedules_content.dart';
 
 TextStyle headerStyle = TextStyle(
     fontFamily: FONT_FAMILY,
@@ -25,12 +26,12 @@ TextStyle hostTextStyle = TextStyle(
 TextStyle aboutStyle =
     TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 13);
 
-class EventDetail extends StatefulWidget {
+class EventDetailView extends StatefulWidget {
   @override
-  State<EventDetail> createState() => _EventDetailState();
+  State<EventDetailView> createState() => _EventDetailViewState();
 }
 
-class _EventDetailState extends State<EventDetail> {
+class _EventDetailViewState extends State<EventDetailView> {
   String _eventDate = "12.02.2022";
 
   String _duration = "4 hours";
@@ -69,7 +70,7 @@ class _EventDetailState extends State<EventDetail> {
                   TopContentWidget(_title, _host),
 
                   //About Content
-                  AboutContentWidget(aboutsText),
+                  AboutContentWidget(EventDetailStrings.aboutsText),
 
                   //Next Schadule
                   SchedulesContentWidget(
@@ -86,12 +87,12 @@ class _EventDetailState extends State<EventDetail> {
               //color: Colors.red,
               height: context.height * 2 / 10,
               child: Column(
-                children: [
+                children: const [
                   //Participant profile
                   ParticipantContentWidget(),
 
                   //Join Button
-                  JoinButton()
+                  JoinButtonWidget()
                 ],
               ),
             ),

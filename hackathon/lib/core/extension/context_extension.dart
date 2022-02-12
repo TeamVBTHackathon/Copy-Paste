@@ -34,6 +34,7 @@ extension PaddingExtension on BuildContext {
   EdgeInsets get paddingHightNormal => EdgeInsets.all(normalHightValue);
   EdgeInsets get paddingHightMedium => EdgeInsets.all(mediumHightValue);
   EdgeInsets get paddingHightHigh => EdgeInsets.all(highHightValue);
+  EdgeInsets get noPadding => const EdgeInsets.all(0.0);
 
   EdgeInsets get paddingWithLowLow => EdgeInsets.all(lowWidthValue);
   EdgeInsets get paddingWithLowNormal => EdgeInsets.all(normalWidthValue);

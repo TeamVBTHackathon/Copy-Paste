@@ -1,7 +1,7 @@
-part of 'main_screen.dart';
+part of home_page_view;
 
-class MainScreenBottom extends StatelessWidget {
-  const MainScreenBottom({Key? key}) : super(key: key);
+class HomePageBottom extends StatelessWidget {
+  const HomePageBottom({Key? key}) : super(key: key);
 
   final String _eventDay = "21";
   final String _eventMonth = "MAR";
@@ -41,7 +41,7 @@ class MainScreenBottom extends StatelessWidget {
     );
   }
 
-  Padding _buildEventsImage(BuildContext context) {
+  Widget _buildEventsImage(BuildContext context) {
     return Padding(
       padding: HomePadding.homeBottomListViewPadding,
       child: Row(
@@ -105,7 +105,7 @@ class MainScreenBottom extends StatelessWidget {
     );
   }
 
-  Text _buildNearestEvents(BuildContext context) {
+  Widget _buildNearestEvents(BuildContext context) {
     return Text(
       HomePageString.yakinEtkinlikler,
       style: Theme.of(context).textTheme.bodyText1!.copyWith(
