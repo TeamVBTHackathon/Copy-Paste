@@ -7,6 +7,7 @@ import 'package:hackathon/features/authenticate/register/register_screen.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/onboarding_view.dart';
+import 'package:hackathon/features/profile/profile_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,15 +21,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        LoginView.routeName: (ctx) => const LoginView(),
-        RegisterScreen.routeName: (ctx) => const RegisterScreen(),
-        LandingScreen.routeName: (ctx) => const LandingScreen(),
-      },
+      // initialRoute: '/',
+      // routes: {
+      //   LoginView.routeName: (ctx) => const LoginView(),
+      //   RegisterScreen.routeName: (ctx) => const RegisterScreen(),
+      //   LandingScreen.routeName: (ctx) => const LandingScreen(),
+      // },
+      home: ProfileView(),
     );
   }
 }
