@@ -11,6 +11,8 @@ import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/onboarding_view.dart';
 import 'package:hackathon/features/profile/profile_view.dart';
 
+import 'features/eventDetail/event_detail_view.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -27,15 +29,14 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
-
-      // initialRoute: '/',
-      // routes: {
-      //   LoginView.routeName: (ctx) => const LoginView(),
-      //   RegisterScreen.routeName: (ctx) => const RegisterScreen(),
-      //   LandingScreen.routeName: (ctx) => const LandingScreen(),
-      // },
-
-      home: ProfileView(),
+      home: EventDetail(),
+      initialRoute: '/',
+      //const AuthStateScreen(),
+      routes: {
+        LoginView.routeName: (ctx) => const LoginView(),
+        RegisterScreen.routeName: (ctx) => const RegisterScreen(),
+        LandingScreen.routeName: (ctx) => const LandingScreen(),
+      },
 
     );
   }
