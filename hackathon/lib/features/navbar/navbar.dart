@@ -13,7 +13,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [HomePageView(), EventDetailView(), MessangerView(), ProfileView()];
+
+  List pages = [
+    MainScreen(),
+    EventDetail(),
+    MessangerView(),
+    ProfileView(),
+  ];
+
 
   int _selectedIndex = 0;
   void onTap(int index) {
@@ -47,8 +54,8 @@ class _MainPageState extends State<MainPage> {
             label: 'Bar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.message),
+            label: 'Mesajlar',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

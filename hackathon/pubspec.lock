@@ -506,6 +506,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.4.0"
+  line_icons:
+    dependency: "direct main"
+    description:
+      name: line_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   lints:
     dependency: transitive
     description:
@@ -527,6 +534,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
+
   material_color_utilities:
     dependency: transitive
     description:
@@ -534,6 +542,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4"
+
   meta:
     dependency: transitive
     description:
@@ -685,7 +694,9 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+
     version: "0.4.9"
+
   timing:
     dependency: transitive
     description:

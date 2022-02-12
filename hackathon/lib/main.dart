@@ -29,13 +29,14 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
-      home: HomePageView(),
-=======
-      home: const OnBoardingView(),
+
+      home: MainPage(),
+
+
+
       //MainScreen(),
 
->>>>>>> b10c60be420e6544095d44425e8e6af36fbc6502
+
       // initialRoute: '/',
       // //const AuthStateScreen(),
       // routes: {
