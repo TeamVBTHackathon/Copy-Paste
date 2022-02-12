@@ -3,10 +3,12 @@ library login_view;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/features/authenticate/login/service/login_service.dart';
 import 'package:hackathon/features/authenticate/login/view_model/login_view_model.dart';
 import 'package:hackathon/features/authenticate/register/register_screen.dart';
 import 'package:hackathon/features/authenticate/widgets/animation_widget.dart';
+import 'package:hackathon/features/authenticate/widgets/custom_text_form_field_widget.dart';
 
 part 'parts/login_view_body.dart';
 part 'parts/login_view_body2.dart';
@@ -26,7 +28,9 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       body: Stack(
         children: [
-          const AnimationWidget(),
+          AnimationWidget(
+            querterTurns: 4,
+          ),
           LoginViewBody2(),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,

@@ -1,11 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon/core/extension/context_extension.dart';
-import 'package:hackathon/features/authenticate/login/login_screen.dart';
-
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
+import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -137,24 +133,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          RotatedBox(
-            quarterTurns: 2,
-            child: WaveWidget(
-              config: CustomConfig(
-                colors: [
-                  Colors.orangeAccent,
-                  Colors.tealAccent,
-                  Colors.pinkAccent,
-                  Colors.deepPurpleAccent,
-                ],
-                durations: [35000, 11000, 10800, 6000],
-                heightPercentages: [0.01, 0.02, 0.03, 0.1],
-                blur: const MaskFilter.blur(BlurStyle.solid, 0),
-              ),
-              heightPercentange: 0.2,
-              size: const Size(double.infinity, double.infinity),
-            ),
-          ),
           SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -311,7 +289,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: TextButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushReplacementNamed(LoginScreen.routeName);
+                        .pushReplacementNamed(LoginView.routeName);
                   },
                   child: const Text(
                     'Signup to Your Account',
