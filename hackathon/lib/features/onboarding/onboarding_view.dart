@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
-=======
+
 import 'package:hackathon/core/constants/strings/onboarding_strings.dart';
-import 'package:hackathon/features/homepage/view/main_screen.dart';
->>>>>>> b10c60be420e6544095d44425e8e6af36fbc6502
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
