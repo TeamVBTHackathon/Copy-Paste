@@ -8,6 +8,8 @@ import 'package:hackathon/features/landing/landing_screen.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/intro_screen.dart';
 
+import 'features/eventDetail/event_detail_view.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: EventDetail(),
       initialRoute: '/',
       //const AuthStateScreen(),
       routes: {
