@@ -6,7 +6,7 @@ import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 import 'package:hackathon/features/authenticate/register/register_screen.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
-import 'package:hackathon/features/onboarding/intro_screen.dart';
+import 'package:hackathon/features/onboarding/onboarding_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      //const AuthStateScreen(),
       routes: {
         LoginView.routeName: (ctx) => const LoginView(),
         RegisterScreen.routeName: (ctx) => const RegisterScreen(),

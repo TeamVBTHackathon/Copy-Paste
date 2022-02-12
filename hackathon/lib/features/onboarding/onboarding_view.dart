@@ -3,14 +3,14 @@ import 'package:hackathon/features/homepage/main_screen.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
-class IntroScreen extends StatefulWidget {
-  const IntroScreen({Key? key}) : super(key: key);
+class OnBoardingView extends StatefulWidget {
+  const OnBoardingView({Key? key}) : super(key: key);
 
   @override
-  _IntroScreenState createState() => _IntroScreenState();
+  _OnBoardingViewState createState() => _OnBoardingViewState();
 }
 
-class _IntroScreenState extends State<IntroScreen> {
+class _OnBoardingViewState extends State<OnBoardingView> {
   List<Slide> slides = [];
 
   @override
