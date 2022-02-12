@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
 
 class ThemePurple {
-// ignore: constant_identifier_names
+// ignore: constant_ide
+
+  static const Color lightPurple = Color(0xFFF48FB1);
+  static const Color darkPurple = Color(0xFF8E24AA);
+
+  static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color blackColor = Color(0xFF000000);
+  static const Color greyColor = Color(0xFF9E9E9E);
+  static final Color blackOpacityColor =
+      const Color(0xFF000000).withOpacity(0.5);
+  static final Color greyOpacityColor =
+      const Color(0xFF9E9E9E).withOpacity(0.5);
+
+  static const Color yellowColor = Color(0xFFFFFF4B);
+
+  static const Color transparentColor = Colors.transparent;
 
   final ThemeData theme = ThemeData(
     fontFamily: "Poppins",
     brightness: Brightness.light,
-    primaryColor: const MaterialColor(4289930162, {
+    primaryColor: const MaterialColor(0xfffbeafb, <int, Color>{
       50: Color(0xfffbeafb),
       100: Color(0xfff7d4f6),
-      200: Color(0xffeeaaee),
+      200: Color(0xFFF48FB1),
       300: Color(0xffe67fe5),
       400: Color(0xffde54dd),
       500: Color(0xffd52ad4),
-      600: Color(0xffab21aa),
+      600: Color(0xFF8E24AA),
       700: Color(0xff80197f),
       800: Color(0xff551155),
       900: Color(0xff2b082a)
-    }), //xxx
-    primaryColorBrightness: Brightness.dark,
+    }), //xxx,
     primaryColorLight: const Color(0xfff7d4f6),
     primaryColorDark: const Color(0xff80197f),
     canvasColor: const Color(0xfffafafa), //XX
@@ -61,9 +75,7 @@ class ThemePurple {
       hoverColor: Color(0x0a000000),
       colorScheme: ColorScheme(
         primary: Color(0xffb323b2),
-        primaryVariant: Color(0xff80197f),
         secondary: Color(0xffd52ad4),
-        secondaryVariant: Color(0xff80197f),
         surface: Color(0xffffffff),
         background: Color(0xffeeaaee),
         error: Color(0xffd32f2f),
