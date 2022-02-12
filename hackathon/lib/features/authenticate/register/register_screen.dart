@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/features/authenticate/login/login_screen.dart';
 
 import 'package:wave/config.dart';
