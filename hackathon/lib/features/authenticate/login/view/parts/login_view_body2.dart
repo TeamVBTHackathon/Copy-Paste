@@ -32,7 +32,7 @@ class LoginViewBody2 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           buildTextFormFieldLogin(),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+          SizedBox(height: context.lowHightValue),
           buildTextFormFieldPassword(),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           buildElevatedButtonLogin(context),
@@ -59,21 +59,20 @@ class LoginViewBody2 extends StatelessWidget {
       ? (state.isValidate ? AutovalidateMode.always : AutovalidateMode.disabled)
       : AutovalidateMode.disabled;
 
-  TextFormField buildTextFormFieldLogin() {
-    return TextFormField(
+  CustomTextFormFieldWidget buildTextFormFieldLogin() {
+    return CustomTextFormFieldWidget(
       controller: emailController,
-      validator: (value) => (value ?? '').length > 6 ? null : '6 ten kucuk',
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(), labelText: 'Email'),
+      labelText: 'Email',
+      icon: const Icon(Icons.email),
     );
   }
 
-  TextFormField buildTextFormFieldPassword() {
-    return TextFormField(
+  CustomTextFormFieldWidget buildTextFormFieldPassword() {
+    return CustomTextFormFieldWidget(
       controller: passwordController,
-      validator: (value) => (value ?? '').length > 5 ? null : '5 ten kucuk',
-      decoration: const InputDecoration(
-          border: OutlineInputBorder(), labelText: 'Password'),
+      labelText: 'Password',
+      icon: const Icon(Icons.lock),
+      isObsecure: true,
     );
   }
 
