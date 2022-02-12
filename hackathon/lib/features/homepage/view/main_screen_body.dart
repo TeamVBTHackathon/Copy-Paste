@@ -2,14 +2,16 @@ part of 'main_screen.dart';
 
 class MainScreenBody extends StatelessWidget {
   const MainScreenBody({Key? key}) : super(key: key);
-//asdsad
+
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = ThemePurple().theme;
+
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       child: Container(
-        color: Colors.purple,
+        color: theme.primaryColor,
         child: Column(
           children: [
             Container(
@@ -21,63 +23,59 @@ class MainScreenBody extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 16, horizontal: 0),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Find Amazing Events Near You",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                              textAlign: TextAlign.start,
+                padding: EdgeInsets.all(context.height * 0.02),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: context.height * 0.02, horizontal: 0),
+                      child: Column(
+                        children: [
+                          Text(
+                            HomePageString.title,
+                            style: theme.textTheme.headline1!
+                                .copyWith(color: Colors.white),
+                            textAlign: TextAlign.start,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 40,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 40,
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.location_on, color: Colors.white),
-                                  Text(
-                                    "258 Events Around You",
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.location_on, color: Colors.white),
+                                Text(
+                                  HomePageString.subtitle,
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                ),
+                              ],
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Form(
-                                child: TextFormField(
-                                  cursorColor: Colors.white,
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.transparent),
-                                    ),
-                                    hoverColor: Colors.transparent,
-                                    labelText: "Search Events",
-                                    prefixIcon: Icon(Icons.search),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Form(
+                              child: TextFormField(
+                                cursorColor: Colors.white,
+                                decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
                                   ),
+                                  hoverColor: Colors.transparent,
+                                  labelText: HomePageString.searchBar,
+                                  prefixIcon: Icon(Icons.search),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -111,7 +109,8 @@ class MainScreenBody extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 6),
                             child: Text(
-                              "Local Art",
+                              // TODO : dynamic
+                              "Category ",
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
