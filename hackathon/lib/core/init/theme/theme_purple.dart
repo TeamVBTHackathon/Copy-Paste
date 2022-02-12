@@ -73,19 +73,6 @@ class ThemePurple {
       splashColor: Color(0x1f000000),
       focusColor: Color(0x1f000000),
       hoverColor: Color(0x0a000000),
-      colorScheme: ColorScheme(
-        primary: Color(0xffb323b2),
-        secondary: Color(0xffd52ad4),
-        surface: Color(0xffffffff),
-        background: Color(0xffeeaaee),
-        error: Color(0xffd32f2f),
-        onPrimary: Color(0xffffffff),
-        onSecondary: Color(0xffffffff),
-        onSurface: Color(0xff000000),
-        onBackground: Color(0xffffffff),
-        onError: Color(0xffffffff),
-        brightness: Brightness.light,
-      ),
     ),
     textTheme: const TextTheme(
       //XX

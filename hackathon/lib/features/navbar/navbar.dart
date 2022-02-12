@@ -13,14 +13,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   List pages = [
-    MainScreen(),
-    EventDetail(),
+    HomePageView(),
+    EventDetailView(),
     MessangerView(),
     ProfileView(),
   ];
-
 
   int _selectedIndex = 0;
   void onTap(int index) {

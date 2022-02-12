@@ -13,16 +13,8 @@ import 'package:hackathon/core/init/theme/theme_purple.dart';
 part 'parts/homepage_view_body.dart';
 part 'parts/homepage_view_bottom.dart';
 
-<<<<<<< HEAD:hackathon/lib/features/homepage/view/home_page_view.dart
 class HomePageView extends StatelessWidget {
-  HomePageView({Key? key}) : super(key: key);
-=======
-class MainScreen extends StatelessWidget {
-  MainScreen({Key? key}) : super(key: key);
-  static const routeName = '/main_screen';
-  
->>>>>>> b10c60be420e6544095d44425e8e6af36fbc6502:hackathon/lib/features/homepage/view/main_screen.dart
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  const HomePageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
