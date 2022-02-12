@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/features/homepage/view/main_screen.dart';
+import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
@@ -48,7 +48,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   void onDonePress() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => MainScreen()),
+      MaterialPageRoute(builder: (context) => HomePageView()),
     );
   }
 

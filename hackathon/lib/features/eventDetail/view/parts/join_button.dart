@@ -1,7 +1,7 @@
 part of event_detail_view;
 
-class JoinButton extends StatelessWidget {
-  const JoinButton({
+class JoinButtonWidget extends StatelessWidget {
+  const JoinButtonWidget({
     Key? key,
   }) : super(key: key);
 
