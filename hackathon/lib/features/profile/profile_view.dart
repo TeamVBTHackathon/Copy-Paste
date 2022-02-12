@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/extension/context_extension.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/eventDetail/event_detail_view.dart';
 import 'package:hackathon/features/widgets/custom_appbar.dart';
 
+import '../../core/constants/icon/profilepage_icon_constants.dart';
+import '../../core/constants/radius/profile_page_radius.dart';
 import '../../core/constants/strings/profile_strings.dart';
 
 class ProfileView extends StatefulWidget {
@@ -24,10 +27,9 @@ class _ProfileViewState extends State<ProfileView>
 
   @override
   Widget build(BuildContext context) {
-    //ProfileStrings strings = ProfileStrings();
     const String randomImage = 'https://picsum.photos/200/300';
 
-    Color _iconColor = Colors.grey.withOpacity(0.5);
+    Color _iconColor = ThemePurple.greyOpacityColor;
     return Scaffold(
       appBar: const CustomAppbar(
         headline: ProfileStrings.headline,
@@ -59,8 +61,8 @@ class _ProfileViewState extends State<ProfileView>
                             height: context.hightValue,
                             width: context.widthValue,
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
+                              color: ThemePurple.whiteColor,
+                              borderRadius: ProfilePageRadius.generalRadius,
                             ),
                             child: Column(
                               children: [
@@ -70,9 +72,10 @@ class _ProfileViewState extends State<ProfileView>
                                     semanticContainer: true,
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     elevation: 8.0,
-                                    margin: const EdgeInsets.all(0.0),
+                                    margin: context.noPadding,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
+                                      borderRadius:
+                                          ProfilePageRadius.generalRadius,
                                     ),
                                     child: Image.network(
                                       randomImage,
@@ -83,14 +86,15 @@ class _ProfileViewState extends State<ProfileView>
                                 Expanded(
                                   flex: 3,
                                   child: Container(
-                                    margin: const EdgeInsets.all(5.0),
+                                    margin: context.paddingWithLowNormal,
                                     child: Center(
                                       child: Text(
                                         ProfileStrings.eventName,
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText1!
-                                            .copyWith(color: Colors.black),
+                                            .copyWith(
+                                                color: ThemePurple.blackColor),
                                       ),
                                     ),
                                   ),
@@ -116,20 +120,15 @@ class _ProfileViewState extends State<ProfileView>
                   height: context.widthValue,
                   width: context.width,
                   decoration: BoxDecoration(
-                    color: const Color(0xffb21fac),
-                    borderRadius: BorderRadius.circular(15),
+                    color: ThemePurple.darkPurple,
+                    borderRadius: ProfilePageRadius.generalRadius,
                   ),
                   child: Row(
                     children: [
                       SizedBox(
                         height: context.hightValue / 3.5,
                         width: context.widthValue,
-                        child: const Card(
-                          child: Icon(
-                            Icons.person_outline_rounded,
-                            color: Color(0xffb21fac),
-                          ),
-                        ),
+                        child: const Card(child: ProfilePageIcon.personIcon),
                       ),
                       const SizedBox(
                         width: 20,
@@ -139,7 +138,7 @@ class _ProfileViewState extends State<ProfileView>
                           Text(
                             ProfileStrings.newEvent,
                             style: TextStyle(
-                                color: Color(0xffFFFF4B),
+                                color: ThemePurple.yellowColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -147,7 +146,7 @@ class _ProfileViewState extends State<ProfileView>
                           Text(
                             ProfileStrings.organizeEvent,
                             style: TextStyle(
-                                color: Colors.white,
+                                color: ThemePurple.whiteColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           )
@@ -160,12 +159,7 @@ class _ProfileViewState extends State<ProfileView>
                   right: 10.0,
                   top: context.hightValue / 7,
                   child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_forward,
-                      color: Color(0xffFFFF4B),
-                    ),
-                  ),
+                      onPressed: () {}, icon: ProfilePageIcon.arrowIcon),
                 )
               ],
             ),
@@ -174,9 +168,9 @@ class _ProfileViewState extends State<ProfileView>
           Expanded(
             flex: 1,
             child: TabBar(
-              indicatorColor: const Color(0xffb21fac),
-              labelColor: const Color(0xffb21fac),
-              unselectedLabelColor: Colors.black.withOpacity(0.5),
+              indicatorColor: ThemePurple.darkPurple,
+              labelColor: ThemePurple.darkPurple,
+              unselectedLabelColor: ThemePurple.blackOpacityColor,
               controller: _controller,
               tabs: const [
                 Tab(
@@ -225,9 +219,9 @@ class _ProfileViewState extends State<ProfileView>
                       semanticContainer: true,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       elevation: 8.0,
-                      margin: const EdgeInsets.all(0.0),
+                      margin: context.noPadding,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                        borderRadius: ProfilePageRadius.generalRadius,
                       ),
                       child: Image.network(
                         randomImage,
@@ -247,7 +241,7 @@ class _ProfileViewState extends State<ProfileView>
                       Text(
                         ProfileStrings.num,
                         style: TextStyle(
-                          color: Colors.black.withOpacity(0.5),
+                          color: ThemePurple.blackOpacityColor,
                         ),
                       ),
                     ],
@@ -262,22 +256,21 @@ class _ProfileViewState extends State<ProfileView>
                     IconButton(
                       onPressed: () {
                         //onpressed calismiyor
-                        setState(() {
-                          if (_iconColor == Colors.grey.withOpacity(0.5)) {
-                            _iconColor = const Color(0xffb21fac);
-                          } else {
-                            _iconColor = Colors.grey.withOpacity(0.5);
-                          }
-                        });
+                        setState(
+                          () {
+                            if (_iconColor == ThemePurple.greyOpacityColor) {
+                              _iconColor = ThemePurple.darkPurple;
+                            } else {
+                              _iconColor = ThemePurple.greyOpacityColor;
+                            }
+                          },
+                        );
                       },
                       icon: const Icon(Icons.favorite),
                       color: _iconColor,
                     ),
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.comment),
-                      color: const Color(0xffb21fac),
-                    ),
+                        onPressed: () {}, icon: ProfilePageIcon.commentIcon),
                   ],
                 ),
               ),

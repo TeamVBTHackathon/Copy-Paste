@@ -17,6 +17,7 @@ part 'parts/register_view_body.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
+  static const routeName = '/register-view';
 
   @override
   State<RegisterView> createState() => _RegisterViewState();

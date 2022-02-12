@@ -1,7 +1,7 @@
 part of login_view;
 
-class LoginViewBody2 extends StatelessWidget {
-  LoginViewBody2({Key? key}) : super(key: key);
+class LoginViewBody extends StatelessWidget {
+  LoginViewBody({Key? key}) : super(key: key);
 
   final GlobalKey<FormState> formKey = GlobalKey();
   TextEditingController emailController = TextEditingController();

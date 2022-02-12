@@ -2,132 +2,139 @@ part of 'main_screen.dart';
 
 class MainScreenBody extends StatelessWidget {
   const MainScreenBody({Key? key}) : super(key: key);
-
+//asdsad
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = ThemePurple().theme;
-
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       child: Container(
-        color: theme.primaryColor,
+        color: ThemePurple.darkPurple,
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.pink.shade300, Colors.purple],
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(context.height * 0.02),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: context.height * 0.02, horizontal: 0),
-                      child: Column(
-                        children: [
-                          Text(
-                            HomePageString.title,
-                            style: theme.textTheme.headline1!
-                                .copyWith(color: Colors.white),
-                            textAlign: TextAlign.start,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 40,
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.location_on, color: Colors.white),
-                                Text(
-                                  HomePageString.subtitle,
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Form(
-                              child: TextFormField(
-                                cursorColor: Colors.white,
-                                decoration: InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent),
-                                  ),
-                                  hoverColor: Colors.transparent,
-                                  labelText: HomePageString.searchBar,
-                                  prefixIcon: Icon(Icons.search),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Container(
-                height: 80,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 12,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                      ),
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 24,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.palette,
-                                color: Colors.pink.shade300,
-                                size: 30,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 6),
-                            child: Text(
-                              // TODO : dynamic
-                              "Category ",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle2!
-                                  .copyWith(color: Colors.white),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
+            _buildHomeEventsContainer(),
+            _buildHomeCategory(),
             const MainScreenBottom(),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildHomeCategory() {
+    return Padding(
+            padding: HomePadding.homeCategoryMainPadding,
+            child: SizedBox(
+              height: 80,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 12,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: HomePadding.homeCategoryListPadding,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: ThemePurple.whiteColor,
+                          radius: HomePageRadius.circleAvatarRadius,
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: HomePageIcon.homePaletIcon),
+                        ),
+                        Padding(
+                          padding: HomePadding.homeCategoryTextPadding,
+                          child: Text(
+                            "Local Art",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2!
+                                .copyWith(color: ThemePurple.whiteColor),
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          );
+  }
+
+  Widget _buildHomeEventsContainer() {
+    return Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [ThemePurple.lightPurple, ThemePurple.darkPurple],
+              ),
+            ),
+            child: Padding(
+              padding: HomePadding.homeMainTitlePadding,
+              child: _buildHomePageTexts(),
+            ),
+          );
+  }
+
+  Widget _buildHomePageTexts() {
+    return Column(
+              children: [
+                Padding(
+                  padding: HomePadding.homeMainTitleColumnPadding,
+                  child: Column(
+                    children: [
+                      Text(
+                        HomePageString.title,
+                        style: const TextStyle(
+                            fontSize: HomePageSize.titleSize,
+                            fontWeight: FontWeight.bold,
+                            color: ThemePurple.whiteColor),
+                        textAlign: TextAlign.start,
+                      ),
+                      Padding(
+                        padding: HomePadding.homeSubTitlePadding,
+                        child: Row(
+                          children: [
+                            const Icon(HomePageIcon.locationIcon,
+                                color: ThemePurple.whiteColor),
+                            Text(
+                              HomePageString.subtitle,
+                              style: const TextStyle(
+                                  fontSize: HomePageSize.subTitleSize,
+                                  color: ThemePurple.whiteColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                      _buildHomeSearchInput(),
+                    ],
+                  ),
+                ),
+              ],
+            );
+  }
+
+  Widget _buildHomeSearchInput() {
+    return Container(
+                        decoration: BoxDecoration(
+                          color: ThemePurple.whiteColor,
+                          borderRadius: HomePageRadius.homeSearchBarRadius,
+                        ),
+                        child: Form(
+                          child: TextFormField(
+                            cursorColor: ThemePurple.whiteColor,
+                            decoration: InputDecoration(
+                              enabledBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: ThemePurple.transparentColor),
+                              ),
+                              hoverColor: ThemePurple.transparentColor,
+                              labelText: HomePageString.searchBar,
+                              prefixIcon: HomePageIcon.searchIcon,
+                            ),
+                          ),
+                        ),
+                      );
   }
 }

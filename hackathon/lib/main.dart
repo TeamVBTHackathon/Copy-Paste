@@ -4,7 +4,6 @@ import 'package:hackathon/core/init/theme/theme.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/authenticate/auth_screen.dart';
 import 'package:hackathon/features/authenticate/login/view/login_view.dart';
-import 'package:hackathon/features/authenticate/register/register_screen.dart';
 import 'package:hackathon/features/authenticate/register/view/register_view.dart';
 import 'package:hackathon/features/homepage/view/main_screen.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
@@ -32,6 +31,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const OnBoardingView(),
       //MainScreen(),
+
       // initialRoute: '/',
       // //const AuthStateScreen(),
       // routes: {

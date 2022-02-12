@@ -16,6 +16,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
 
   TextEditingController passwordController = TextEditingController();
 
+  TextEditingController passwordConfirmController = TextEditingController();
+
   TextEditingController confirmPasswordController = TextEditingController();
 
   TextEditingController locationController = TextEditingController();
@@ -47,7 +49,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
         nameController: nameController,
         passwordController: passwordController,
         confirmPasswordController: confirmPasswordController,
-        //imageController: imageXFile,
         imageController: storeImageUrl,
         formKey: formKey,
         service: RegisterService(),
@@ -71,7 +72,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           nameTextField(),
           emailTextField(),
           passwordTextField(),
-          passwordTextField(),
           _locationTextField(),
           getMyLocation(),
           _registerButton(context),
@@ -86,32 +86,55 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       controller: emailController,
       labelText: 'Email',
       icon: const Icon(Icons.email),
+      textInputType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value!.isEmpty || !value.contains('@')) {
+          return 'Geçerli bir mail adresi giriniz.';
+        } else {
+          return '';
+        }
+      },
     );
   }
 
   CustomTextFormFieldWidget passwordTextField() {
+    bool isVisible = true;
+
+    void _changeVisibility() {
+      setState(() {
+        print(isVisible);
+        isVisible = !isVisible;
+        print(isVisible);
+      });
+    }
+
     return CustomTextFormFieldWidget(
-        controller: passwordController,
-        labelText: "Password",
-        icon: const Icon(Icons.lock));
+      controller: passwordController,
+      labelText: "Şifre",
+      icon: const Icon(Icons.lock),
+      isObsecure: isVisible,
+      validator: (value) {
+        if (value!.isEmpty || value.length < 8) {
+          return 'Şifre en az 8 karakterden oluşmalıdır.';
+        }
+        return '';
+      },
+      iconButton: IconButton(
+        onPressed: () {
+          _changeVisibility();
+        },
+        icon: isVisible
+            ? const Icon(Icons.visibility)
+            : const Icon(Icons.visibility_off),
+      ),
+    );
   }
 
   CustomTextFormFieldWidget nameTextField() {
     return CustomTextFormFieldWidget(
-        controller: nameController,
-        labelText: "Name",
-        icon: const Icon(Icons.person));
-  }
-
-  Row _rowLocation() {
-    return Row(
-      children: [
-        CustomTextFormFieldWidget(
-          controller: locationController,
-          labelText: "Konum",
-          icon: const Icon(Icons.location_on),
-        ),
-      ],
+      controller: nameController,
+      labelText: "İsim",
+      icon: const Icon(Icons.person),
     );
   }
 
@@ -233,10 +256,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
         listener: (context, state) {},
         builder: (context, state) {
           return InkWell(
-            onTap: context.watch<RegisterViewCubit>().isLoading
+            onTap: context.read<RegisterViewCubit>().isLoading
                 ? null
                 : () {
-                    context.read<RegisterViewCubit>().registerUserModel();
+                    context
+                        .read<RegisterViewCubit>()
+                        .updateItems(storeImageUrl);
                   },
             child: Padding(
               padding: EdgeInsets.all(context.height * 0.01),
