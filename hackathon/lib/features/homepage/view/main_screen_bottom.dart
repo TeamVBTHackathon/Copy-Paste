@@ -43,81 +43,74 @@ class MainScreenBottom extends StatelessWidget {
 
   Padding _buildEventsImage(BuildContext context) {
     return Padding(
-                    padding: HomePadding.homeBottomListViewPadding,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 125,
-                          height: 125,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(_eventDay),
-                              Text(_eventMonth),
-                            ],
+      padding: HomePadding.homeBottomListViewPadding,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 125,
+            height: 125,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(_eventDay),
+                Text(_eventMonth),
+              ],
+            ),
+          ),
+          Padding(
+            padding: HomePadding.homeBottomEventInformationPadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _eventDistance,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                Padding(
+                  padding: HomePadding.homeBottomEventNamePadding,
+                  child: Text(
+                    _eventName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5!
+                        .copyWith(fontSize: HomePageSize.homeBottomEventName),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    HomePageIcon.homeBottomLocationIcon,
+                    Text(_eventLocation)
+                  ],
+                ),
+                SizedBox(
+                  width: context.highWidthValue * 2,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(_buttonText),
+                    style: ElevatedButton.styleFrom(
+                      primary: ThemePurple.darkPurple,
+                      textStyle: Theme.of(context).textTheme.button!.copyWith(
+                            color: ThemePurple.whiteColor,
                           ),
-                        ),
-                        Padding(
-                          padding:
-                              HomePadding.homeBottomEventInformationPadding,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                _eventDistance,
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                              Padding(
-                                padding:
-                                    HomePadding.homeBottomEventNamePadding,
-                                child: Text(
-                                  _eventName,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5!
-                                      .copyWith(
-                                          fontSize: HomePageSize
-                                              .homeBottomEventName),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  HomePageIcon.homeBottomLocationIcon,
-                                  Text(_eventLocation)
-                                ],
-                              ),
-                              SizedBox(
-                                width: context.highWidthValue * 2,
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text(_buttonText),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: ThemePurple.darkPurple,
-                                    textStyle: Theme.of(context)
-                                        .textTheme
-                                        .button!
-                                        .copyWith(
-                                          color: ThemePurple.whiteColor,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
                     ),
-                  );
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Text _buildNearestEvents(BuildContext context) {
     return Text(
-            HomePageString.yakinEtkinlikler,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  fontSize: HomePageSize.homeBottomYakinEtkinlikSize,
-                ),
-          );
+      HomePageString.yakinEtkinlikler,
+      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            fontSize: HomePageSize.homeBottomYakinEtkinlikSize,
+          ),
+    );
   }
 }

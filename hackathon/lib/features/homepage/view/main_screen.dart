@@ -13,6 +13,8 @@ part 'main_screen_bottom.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
+  static const routeName = '/main_screen';
+  
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
