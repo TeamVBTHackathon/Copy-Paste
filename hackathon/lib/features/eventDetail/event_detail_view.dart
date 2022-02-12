@@ -137,7 +137,7 @@ class _EventDetailState extends State<EventDetail> {
   
  onPressed: (){},),
   IconButton(
-    icon:Icon(favorite==false ?Icons.favorite_outline:Icons.favorite,color: redTheme.primaryColor,size: 35,),onPressed: ()=>setState(() {
+    icon:Icon(favorite==false ?Icons.favorite_outline:Icons.favorite,color: theme.primaryColor,size: 35,),onPressed: ()=>setState(() {
       favorite=!favorite;
     })),
  ]

@@ -15,7 +15,7 @@ class AboutContentWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("About this event",style: TextThemeLight.instance!.headline5,),
-            IconButton(onPressed: (){}, icon: Icon(Icons.comment,color: redTheme.primaryColor,))
+            IconButton(onPressed: (){}, icon: Icon(Icons.comment,color: theme.primaryColor,))
         
           ],
         ),

@@ -50,7 +50,7 @@ class _ProfileViewState extends State<ProfileView>
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const EventDetail(),
+                                builder: (context) =>  EventDetail(),
                               ),
                             );
                           },

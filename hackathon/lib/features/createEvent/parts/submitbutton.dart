@@ -1,7 +1,7 @@
-part of event_detail_view;
+part of create_event.dart;
 
-class JoinButton extends StatelessWidget {
-  const JoinButton({
+class SubmitButton extends StatelessWidget {
+  const SubmitButton({
     Key? key,
   }) : super(key: key);
 
@@ -19,6 +19,6 @@ class JoinButton extends StatelessWidget {
            borderRadius: BorderRadius.circular(30.0),
            ),
       ),
-       child: Text("Join")));
+       child: Text("Submit")));
   }
 }
