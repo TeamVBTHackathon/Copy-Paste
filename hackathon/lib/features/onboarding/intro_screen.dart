@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/features/homepage/main_screen.dart';
+import 'package:hackathon/features/homepage/view/main_screen.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
