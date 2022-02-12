@@ -3,22 +3,26 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class AnimationWidget extends StatelessWidget {
-  const AnimationWidget({Key? key}) : super(key: key);
+  int querterTurns;
+  AnimationWidget({
+    Key? key,
+    required this.querterTurns,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RotatedBox(
-      quarterTurns: 2,
+      quarterTurns: querterTurns,
       child: WaveWidget(
         config: CustomConfig(
           colors: [
-            Colors.orangeAccent,
-            Colors.tealAccent,
-            Colors.pinkAccent,
-            Colors.deepPurpleAccent,
+            Colors.purpleAccent.shade100,
+            Colors.purpleAccent.shade200,
+            Colors.purpleAccent.shade400,
+            Colors.white,
           ],
-          durations: [35000, 11000, 10800, 6000],
-          heightPercentages: [0.01, 0.02, 0.03, 0.1],
+          durations: [11000, 11000, 10080, 16000],
+          heightPercentages: [0.0, 0.04, 0.08, 0.12],
           blur: const MaskFilter.blur(BlurStyle.solid, 0),
         ),
         heightPercentange: 0.2,

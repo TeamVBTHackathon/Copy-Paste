@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 // ignore: constant_identifier_names
 const String FONT_FAMILY = "Poppins";
 
-final ThemeData redTheme = ThemeData(
+extension CustomThemeData on BuildContext {
+  ThemeData get theme => Theme.of(this);
+}
+
+final ThemeData theme = ThemeData(
   fontFamily: FONT_FAMILY,
   brightness: Brightness.light,
   primaryColor: const MaterialColor(4289930162, {
@@ -55,7 +59,7 @@ final ThemeData redTheme = ThemeData(
     alignedDropdown: false,
     buttonColor: Color(0xffe0e0e0),
     disabledColor: Color(0x61000000),
-    highlightColor: Color(0x29000000),
+    highlightColor: Color(0x00ffff4b),
     splashColor: Color(0x1f000000),
     focusColor: Color(0x1f000000),
     hoverColor: Color(0x0a000000),
@@ -68,7 +72,7 @@ final ThemeData redTheme = ThemeData(
       background: Color(0xffeeaaee),
       error: Color(0xffd32f2f),
       onPrimary: Color(0xffffffff),
-      onSecondary: Color(0xffffffff),
+      onSecondary: Color.fromARGB(255, 255, 255, 75),
       onSurface: Color(0xff000000),
       onBackground: Color(0xffffffff),
       onError: Color(0xffffffff),

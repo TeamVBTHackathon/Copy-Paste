@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/features/eventDetail/event_detail_view.dart';
-import 'package:hackathon/features/homepage/main_screen.dart';
+import 'package:hackathon/features/homepage/view/main_screen.dart';
 import 'package:hackathon/features/messanger/messanger_view.dart';
 import 'package:hackathon/features/profile/profile_view.dart';
 
