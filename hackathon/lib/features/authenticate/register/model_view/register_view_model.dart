@@ -78,6 +78,12 @@ class RegisterLoadingState extends RegisterViewState {
   RegisterLoadingState({required this.isValidate});
 }
 
+class RegisterSuccessState extends RegisterViewState {
+  final bool isSuccess;
+
+  RegisterSuccessState({required this.isSuccess});
+}
+
 class UpdateFileEducationItems extends RegisterViewState {
   final XFile? imageItem;
 

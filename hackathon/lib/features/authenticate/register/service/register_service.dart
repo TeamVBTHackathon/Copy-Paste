@@ -16,7 +16,7 @@ class RegisterService extends IRegisterService {
     try {
       var user = await _auth.createUserWithEmailAndPassword(
           email: model.email, password: model.password);
-      var imageUrl;
+      String imageUrl;
 
       imageUrl =
           await _storageService.uploadMedia(File(model.pickedFile?.path ?? ''));
@@ -31,8 +31,6 @@ class RegisterService extends IRegisterService {
         user: user.user!,
       );
     } on FirebaseAuthException catch (e) {
-      print(e.message);
-
       rethrow;
     }
   }
