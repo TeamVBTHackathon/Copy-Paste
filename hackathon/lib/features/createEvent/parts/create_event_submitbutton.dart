@@ -1,10 +1,8 @@
 part of create_event.dart;
 
 class SubmitButton extends StatelessWidget {
-  const SubmitButton({
-    Key? key,
-  }) : super(key: key);
-
+  var _formKey;
+  SubmitButton(this._formKey);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +10,7 @@ class SubmitButton extends StatelessWidget {
       margin: EdgeInsets.only(top: 20),
       width: double.infinity,
       height: context.height/15,
-      child: ElevatedButton(onPressed: (){},
+      child: ElevatedButton(onPressed: ()=>_trySubmit(context,_formKey),
       style: ElevatedButton.styleFrom(
         primary: theme.primaryColor,
         shape: RoundedRectangleBorder(
@@ -21,4 +19,15 @@ class SubmitButton extends StatelessWidget {
       ),
        child: Text("Submit")));
   }
+
+
+     void _trySubmit(context,var _formKey) async {
+    final _isValid = _formKey.currentState!.validate();
+    FocusScope.of(context).unfocus();
+
+    if (_isValid) {
+      _formKey.currentState!.save();
+    }
+  }
+
 }

@@ -1,6 +1,8 @@
 
 library create_event.dart;
 
+
+
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +10,16 @@ import 'package:flutter/services.dart';
 import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/core/init/theme/theme.dart';
 import 'package:hackathon/features/createEvent/globalmethods/globalemethods.dart';
+import 'package:hackathon/features/createEvent/widgets/mytext.dart';
 import 'package:image_picker/image_picker.dart';
 
 
-part 'parts/submitbutton.dart';
+part 'parts/create_event_titlecontent.dart';
+part 'parts/create_event_submitbutton.dart';
+part 'parts/create_event_descriptioncontent.dart';
+
+part 'parts/create_event_selectimage.dart';
+
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({Key? key}) : super(key: key);
@@ -24,8 +32,7 @@ class CreateEvent extends StatefulWidget {
 
 class _CreateEventState extends State<CreateEvent> {
   
- List icon=[Icons.camera_alt,Icons.image,Icons.remove_circle];
- List iconText = ["Camera","Gallery","Remove"];
+
 
   final _formKey = GlobalKey<FormState>();
  int selectValue = 0;
@@ -34,15 +41,11 @@ class _CreateEventState extends State<CreateEvent> {
   
 
 
-  var productDescription = '';
+
 
   final TextEditingController _categoryController = TextEditingController();
-  final TextEditingController _brandController = TextEditingController();
   final TextEditingController _titleController = TextEditingController();
-
-
-
-
+  final TextEditingController _descriptionController = TextEditingController();
   GlobalMethods _globalMethods = GlobalMethods();
 
   File? image;
@@ -65,84 +68,34 @@ class _CreateEventState extends State<CreateEvent> {
                     child: Column(
                       children: [
                         Container(
-                          //color: Colors.amber,
-                          height: context.height*7/10,
+                         //color: Colors.amber,
+                          //height: context.height*7.5/10,
                           child: Column(
                             children: [
-                             
-                              
 
                               //select Photo
-                              _imageBox(context),
+                             AddImageContainer(image),
 
                               //select Event Title
-
-                              Container(
-                               margin: EdgeInsets.only(top: 40),
-                               child: Column(
-
-                                 children: [
-                                    Container(
-                                      padding: EdgeInsets.only(bottom: 10),
-                                      alignment:Alignment.centerLeft,child:  MyText("Event Title", 20, Colors.black),),
-                                   Container(
-                                    margin: EdgeInsets.only(bottom: 20),
-                                    child: TextFormField(
-
-                                       // key: ValueKey(valKey),
-                                        validator: (val) {
-                                          if (val!.isEmpty) {
-                                            return 'Please enter a title';
-                                          }
-                                          return null;
-                                        },
-                                        
-                                        controller: _titleController,
-                                       
-                                        keyboardType:TextInputType.text,
-                                        maxLines: 1,
-                                      
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(20.0),
-                                          hintText: 'Example Company',
-                                          enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey,width: 1)),
-                                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: theme.primaryColor,width: 1))
-                                        ),
-                                        onSaved: (val) {
-                                          productTitle = val!;
-                                        },
-                                      )
-                                    
-                                    
-                                   
-                            ),
-                                 ],
-                               ),
-                             ),
+                              EventTitleContent(titleController: _titleController),
                             
-                               eventTitleContent(),
+                              // add event description
+                               EventDescriptionContent(descriptionController:_descriptionController,),
 
-                            
-                                descriptionContent(),
-
-                                selectCategory(context),
-
-   
-                              
+                              //select event Category
+                                selectCategory(),
                             ],
                           ),
                         ),
                          Container(
                            //color: Colors.black,
                              height: context.height*1/11,
-                           child: SubmitButton())
+                           child: SubmitButton(_formKey))
                       ],
                     ),
                   ),
                 ),
               ),
-             
-             
             ],
           ),
         ),
@@ -150,69 +103,18 @@ class _CreateEventState extends State<CreateEvent> {
     );
   }
 
-  TextFormField descriptionContent() {
-    return _textFormField(
-                                onSaved: productDescription,
-                                valKey: 'Description',
-                                valText: 'Product description is required',
-                                hintText: 'Description',
-                                line: 5,
+    Container selectCategory() {
+    return Container(
+                                margin: EdgeInsets.only(top: 20,left: 10),
+                                padding: EdgeInsets.only(left: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(width: 1,color: Colors.black),),
                                
-                              );
-  }
-
-  Container eventTitleContent() {
-    return Container(
-                               margin: EdgeInsets.only(top: 40),
-                               child: Column(
-
-                                 children: [
-                                    Container(
-                                      padding: EdgeInsets.only(bottom: 10),
-                                      alignment:Alignment.centerLeft,child:  MyText("Event Title", 20, Colors.black),),
-                                   Container(
-                                    margin: EdgeInsets.only(bottom: 20),
-                                    child: TextFormField(
-
-                                       // key: ValueKey(valKey),
-                                        validator: (val) {
-                                          if (val!.isEmpty) {
-                                            return 'Please enter a title';
-                                          }
-                                          return null;
-                                        },
-                                        
-                                        controller: _titleController,
-                                       
-                                        keyboardType:TextInputType.text,
-                                        maxLines: 1,
-                                      
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(20.0),
-                                          hintText: 'Example Company',
-                                          enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey,width: 1)),
-                                          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: theme.primaryColor,width: 1))
-                                        ),
-                                        onSaved: (val) {
-                                          productTitle = val!.toString();
-                                        },
-                                      )
-                                    
-                                    
-                                   
-                            ),
-                                 ],
-                               ),
-                             );
-  }
-
-  Container selectCategory(BuildContext context) {
-    return Container(
-                                margin: EdgeInsets.only(top: 20),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(items[selectValue]),
+                                    MyText(items[selectValue].toString(), 20, Colors.black),
 
                                 Container(
                                   height: 50,
@@ -227,7 +129,7 @@ class _CreateEventState extends State<CreateEvent> {
                                      onPressed: (){
                                        showCupertinoModalPopup(context: context,
                                         builder: (context)=>CupertinoActionSheet(
-                                          actions: [buildPicker()],
+                                          actions: [BuildPickerOfCategory()],
                                           cancelButton: CupertinoActionSheetAction(child: Text("Cancel"),
                                           onPressed: ()=>Navigator.pop(context),),
                                         ));
@@ -239,184 +141,24 @@ class _CreateEventState extends State<CreateEvent> {
                               );
   }
 
-  Widget buildPicker()=> SizedBox(
-                height: 250,
-                  child: CupertinoPicker(
-                  itemExtent: 60,
-                  looping: true,
-                  onSelectedItemChanged: (int value) { 
-                    setState(() {
-                      selectValue=value;
-                    });
-                   },
-                  children: items.map((e) => Center(child: MyText(e, 20, Colors.black))).toList(),),
-                  );
-
-  Row _imageBox(BuildContext context) {
-    return Row(
-                        children: [
-                          Expanded(
-                            child: image== null
-                                ? Container(
-                                    height: 200,
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  )
-                                : Container(
-                                    height: 200,
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    child: Image.file(
-                                      image!,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                          ),
-                          Container(
-                            height: 200,
-                            //color:Colors.red,
-                            child: Column(
-                             
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                //selecting event photo
-                                for(var i =0;i<3;i++)
-
-                                InkWell(
-                                  onTap: ()=>i==0?_getCameraImage():i==1?_getGalleryImage():_removeImage(),
-                                  child: Container(
-                                    width: context.width/4,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Icon(icon[i]),
-                                      Text(iconText[i])
-                                    ],
-                                  ),),
-                                ),
-                               
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-  }
-
-  TextFormField _textFormField({
-    required String onSaved,
-    required String valKey,
-    required String valText,
-    required String hintText,
-    String? onChanged,
-    TextInputType? textInputType,
-    List<TextInputFormatter>? filteringTextInput,
-    TextEditingController? controller,
-    
-    int? line,
-  }) {
-    return TextFormField(
-
-      key: ValueKey(valKey),
-      validator: (val) {
-        if (val!.isEmpty) {
-          return valText;
-        }
-        return null;
-      },
-      
-      controller: controller,
-      inputFormatters: filteringTextInput,
-      keyboardType: textInputType ?? TextInputType.text,
-      maxLines: line ?? 1,
-    
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(20.0),
-        hintText: hintText,
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey,width: 1)),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: theme.primaryColor,width: 1))
-      ),
-      onSaved: (val) {
-        onSaved = val!.toString();
-      },
-    );
-  }
-
-   void _trySubmit() async {
-    final _isValid = _formKey.currentState!.validate();
-    FocusScope.of(context).unfocus();
-
-    if (_isValid) {
-      _formKey.currentState!.save();
+    SizedBox BuildPickerOfCategory() {
+      return SizedBox(
+                               height: 250,
+                                 child: CupertinoPicker(
+                                 itemExtent: 60,
+                                 looping: true,
+                                onSelectedItemChanged: (int value) { 
+                                  setState(() {
+                                    selectValue=value;
+                                  });
+                                },
+                                children: items.map((e) => Center(child: Text(e,style: TextStyle(color: Colors.black,fontSize: 20),))).toList(),),
+                                );
     }
-  }
-
-  Future _getCameraImage() async {
-    final image2 = await ImagePicker().pickImage(source: ImageSource.camera);
-    setState(() {
-      image = File(image2!.path);
-    });
-  }
-
-  Future _getGalleryImage() async {
-    final image2 = await ImagePicker().pickImage(source: ImageSource.gallery);
-    setState(() {
-      image = File(image2!.path);
-    });
-  }
-
-  void _removeImage() {
-    setState(() {
-      image = null;
-    });
-  }
-
-  void listeyeYasEkle(){
-    for(var i =14;i<5;i++)
-      {
-        items.add(i);
-      }
-      
-    
-    }
-
-    List<DropdownMenuItem<String>> categoryItems = [
-                                DropdownMenuItem(
-                                  
-                                  child: Container(
-
-                                    height: 50,
-                                    width: 300,
-                                    child: Text('Bussines')),
-                                  value: 'Bussines',
-                                ),
-                                DropdownMenuItem(
-                                  child: Container(
-                                    height: 50,
-                                    width: 300,
-                                    child: Text('workplace')),
-                                  value: 'workplace',
-                                ),
-                               
-                                
-                              ];
-   
 }
 
 
 
-MyText(String text,double size,Color color,){
-  
-  return Text(text,style: TextStyle(fontSize: size,color: color,));
-}
+
 
 
