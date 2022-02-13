@@ -6,22 +6,21 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
-      margin: EdgeInsets.only(top: 20),
-      width: double.infinity,
-      height: context.height/15,
-      child: ElevatedButton(onPressed: ()=>_trySubmit(context,_formKey),
-      style: ElevatedButton.styleFrom(
-        primary: theme.primaryColor,
-        shape: RoundedRectangleBorder(
-           borderRadius: BorderRadius.circular(30.0),
-           ),
-      ),
-       child: Text("Submit")));
+        margin: CreateEventPadding.submitButtonMargin,
+        width: double.infinity,
+        height: context.height / 15,
+        child: ElevatedButton(
+            onPressed: () => _trySubmit(context, _formKey),
+            style: ElevatedButton.styleFrom(
+              primary: theme.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: CreateEventRadius.submitButtonRadius,
+              ),
+            ),
+            child: const Text(CreateEventStrings.submitButtonText)));
   }
 
-
-     void _trySubmit(context,var _formKey) async {
+  void _trySubmit(context, var _formKey) async {
     final _isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
 
@@ -29,5 +28,4 @@ class SubmitButton extends StatelessWidget {
       _formKey.currentState!.save();
     }
   }
-
 }

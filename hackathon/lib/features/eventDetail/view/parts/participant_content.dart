@@ -9,21 +9,25 @@ class ParticipantContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          width: context.width*2.1/5,
-          height: context.height/23,
+        SizedBox(
+          width: context.width * 2.1 / 5,
+          height: context.height / 23,
           child: ListView.builder(
             shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: 4,
-          itemBuilder: (context,index){
-          return CircleAvatar(
-            backgroundColor: Colors.grey,
-          );
-        })),
-        Text(" +15 participants",style: TextStyle(fontSize: 15),)
+            scrollDirection: Axis.horizontal,
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return const CircleAvatar(
+                backgroundColor: ThemePurple.greyColor,
+              );
+            },
+          ),
+        ),
+        const Text(
+          EventDetailStrings.participants,
+          style: TextStyle(fontSize: EventDetailSize.eventDetailAvatarSize),
+        )
       ],
     );
   }
 }
-

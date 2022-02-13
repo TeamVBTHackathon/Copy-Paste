@@ -2,19 +2,19 @@ part of event_detail_view;
 
 class AboutContentWidget extends StatelessWidget {
   final String _aboutText;
-  AboutContentWidget(this._aboutText);
+  const AboutContentWidget(this._aboutText, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: EventDetailPadding.aboutContentPadding,
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "About this event",
+                EventDetailStrings.aboutThis,
                 style: TextThemeLight.instance!.headline5,
               ),
               IconButton(
@@ -26,7 +26,7 @@ class AboutContentWidget extends StatelessWidget {
             ],
           ),
           Container(
-              padding: EdgeInsets.only(right: 10, bottom: 20),
+              padding: EventDetailPadding.aboutContentContainerPadding,
               child: Text(_aboutText, style: aboutStyle)),
         ],
       ),

@@ -8,7 +8,7 @@ class JoinButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: EventDetailPadding.joinButtonPadding,
         width: double.infinity,
         height: context.height / 15,
         child: ElevatedButton(
@@ -16,9 +16,9 @@ class JoinButtonWidget extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               primary: theme.primaryColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
+                borderRadius: EventDetailRadius.joinButtonRadius,
               ),
             ),
-            child: Text("Join")));
+            child: const Text(EventDetailStrings.joinButtonText)));
   }
 }

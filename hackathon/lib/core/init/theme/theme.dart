@@ -22,7 +22,6 @@ final ThemeData theme = ThemeData(
     800: Color(0xff551155),
     900: Color(0xff2b082a)
   }), //xxx
-  primaryColorBrightness: Brightness.dark,
   primaryColorLight: const Color(0xfff7d4f6),
   primaryColorDark: const Color(0xff80197f),
   canvasColor: const Color(0xfffafafa), //XX
@@ -65,9 +64,7 @@ final ThemeData theme = ThemeData(
     hoverColor: Color(0x0a000000),
     colorScheme: ColorScheme(
       primary: Color(0xffb323b2),
-      primaryVariant: Color(0xff80197f),
       secondary: Color(0xffd52ad4),
-      secondaryVariant: Color(0xff80197f),
       surface: Color(0xffffffff),
       background: Color(0xffeeaaee),
       error: Color(0xffd32f2f),

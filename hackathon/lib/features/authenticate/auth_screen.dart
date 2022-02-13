@@ -17,7 +17,7 @@ class AuthStateScreen extends StatelessWidget {
           );
         } else if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.hasData) {
-            return HomePageView();
+            return const HomePageView();
           } else {
             return const LandingScreen();
           }
