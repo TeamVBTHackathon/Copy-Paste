@@ -12,7 +12,7 @@ import '../../../core/constants/strings/profile_strings.dart';
 import '../widgets/listview.dart';
 
 part 'parts/scroll_row_content.dart';
-part 'parts/create_event_content.dart';
+part 'parts/createeventcontent.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class _ProfileViewState extends State<ProfileView>
             flex: 4,
             child: ScrollRowWidget()
           ),
-          const Expanded(
+           const Expanded(
             flex: 2,
             child: CreateEventWidget()
           ),

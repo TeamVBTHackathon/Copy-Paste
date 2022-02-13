@@ -20,6 +20,7 @@ class ListViewWidget extends StatefulWidget {
 
 class _ListViewWidgetState extends State<ListViewWidget> {
   String randomImage = 'https://picsum.photos/200/300';
+  bool isFavourite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       padding: context.paddingWithLowNormal,
       child: ListView.builder(
         padding: context.paddingWithLowNormal,
-        itemCount: 8, //gelecek olan verin kadar donecek
+        itemCount: 8, //gelecek olan veri kadar donecek
         itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: [
@@ -77,19 +78,15 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        //onpressed calismiyor
-                        setState(
-                          () {
-                            if (widget.iconColor ==
-                                ThemePurple.greyOpacityColor) {
-                              widget.iconColor = ThemePurple.darkPurple;
-                            } else {
-                              widget.iconColor = ThemePurple.greyOpacityColor;
-                            }
-                          },
-                        );
+                        setState(() {
+                          isFavourite = !isFavourite;
+                        });
                       },
-                      icon: const Icon(Icons.favorite),
+                      icon: Icon(
+                        isFavourite == false
+                            ? Icons.favorite_outline
+                            : Icons.favorite,
+                      ),
                       color: widget.iconColor,
                     ),
                     IconButton(
