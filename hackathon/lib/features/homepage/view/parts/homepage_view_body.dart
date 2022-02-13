@@ -26,36 +26,56 @@ class HomePageBody extends StatelessWidget {
       padding: HomePadding.homeCategoryMainPadding,
       child: SizedBox(
         height: 80,
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: 12,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: HomePadding.homeCategoryListPadding,
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: ThemePurple.whiteColor,
-                    radius: HomePageRadius.circleAvatarRadius,
-                    child: IconButton(
-                        onPressed: () {}, icon: HomePageIcon.homePaletIcon),
-                  ),
-                  Padding(
-                    padding: HomePadding.homeCategoryTextPadding,
-                    child: Text(
-                      "Local Art",
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle2!
-                          .copyWith(color: ThemePurple.whiteColor),
-                    ),
-                  )
-                ],
+        child: StreamBuilder(
+          stream:
+              FirebaseFirestore.instance.collection('categroies').snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return const Center(child: Text('Error'));
+            }
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) => Container(
+                child: categories(
+                  context,
+                  snap: snapshot.data!.docs[index].data(),
+                ),
               ),
             );
           },
         ),
+      ),
+    );
+  }
+
+//categories(context)
+  Padding categories(BuildContext context, {dynamic snap}) {
+    return Padding(
+      padding: HomePadding.homeCategoryListPadding,
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundColor: ThemePurple.whiteColor,
+            radius: HomePageRadius.circleAvatarRadius,
+            child:
+                IconButton(onPressed: () {}, icon: HomePageIcon.homePaletIcon),
+          ),
+          Padding(
+            padding: HomePadding.homeCategoryTextPadding,
+            child: Text(
+              snap['name'],
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle2!
+                  .copyWith(color: ThemePurple.whiteColor),
+            ),
+          )
+        ],
       ),
     );
   }

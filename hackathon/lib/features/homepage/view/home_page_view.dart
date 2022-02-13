@@ -1,5 +1,6 @@
 library home_page_view;
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/constants/Size/home_page_size_constants.dart';
@@ -14,11 +15,9 @@ part 'parts/homepage_view_body.dart';
 part 'parts/homepage_view_bottom.dart';
 
 class HomePageView extends StatelessWidget {
-
-
   const HomePageView({Key? key}) : super(key: key);
 
-    static const routeName = '/home-page';
+  static const routeName = '/home-page';
 
   @override
   Widget build(BuildContext context) {

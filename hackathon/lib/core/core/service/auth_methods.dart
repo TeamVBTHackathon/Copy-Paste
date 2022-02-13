@@ -3,13 +3,13 @@ import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hackathon/core/core/service/storages_methods.dart';
 import '../model/user_model.dart' as model;
-import './storage_service.dart';
 
 class AuthMethod {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final StorageService _storageService = StorageService();
+
   Future<model.UserModel> getUserDetails() async {
     User currentUser = _auth.currentUser!;
 
@@ -24,19 +24,17 @@ class AuthMethod {
       required String password,
       required String name,
       required String location,
-      required File file}) async {
+      required Uint8List file}) async {
     String res = "Some error occured";
 
     try {
-      if (email.isNotEmpty ||
-          password.isNotEmpty ||
-          name.isNotEmpty ||
-          location.isNotEmpty) {
+      if (email.isNotEmpty || password.isNotEmpty || name.isNotEmpty) {
         // register user
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
-        String photoUrl = await _storageService.uploadMedia(file);
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('profilePics', file, false);
 
         // add user to our database
 
@@ -44,7 +42,6 @@ class AuthMethod {
           id: cred.user!.uid,
           email: email,
           name: name,
-          location: location,
           imageUrl: photoUrl,
         );
 

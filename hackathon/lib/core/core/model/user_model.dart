@@ -9,7 +9,6 @@ class UserModel {
   String id;
   String name;
   String email;
-  String location;
   String imageUrl;
   List<CommentModel>? comments;
   List<EventModel>? events;
@@ -21,7 +20,6 @@ class UserModel {
     required this.id,
     required this.name,
     required this.email,
-    required this.location,
     required this.imageUrl,
     List<CommentModel>? comments,
     List<EventModel>? events,
@@ -38,7 +36,6 @@ class UserModel {
       id: snapshot["id"],
       imageUrl: snapshot["imageUrl"],
       name: snapshot["name"],
-      location: snapshot["location"],
     );
   }
 
@@ -47,7 +44,6 @@ class UserModel {
       'id': id,
       'name': name,
       'email': email,
-      'location': location,
       'imageUrl': imageUrl,
       'comments': comments?.map((x) => x.toMap()).toList(),
       'events': events?.map((x) => x.toMap()).toList(),
@@ -62,7 +58,6 @@ class UserModel {
       id: map['id'] ?? '',
       name: map['name'] ?? '',
       email: map['email'] ?? '',
-      location: map['location'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
       comments: map['comments'] != null
           ? List<CommentModel>.from(
