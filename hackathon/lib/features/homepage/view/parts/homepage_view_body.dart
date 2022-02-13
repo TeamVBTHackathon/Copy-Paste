@@ -1,8 +1,29 @@
 part of home_page_view;
 
-class HomePageBody extends StatelessWidget {
-  const HomePageBody({Key? key}) : super(key: key);
+class HomePageBody extends StatefulWidget {
+   HomePageBody({Key? key}) : super(key: key);
 
+  @override
+  State<HomePageBody> createState() => _HomePageBodyState();
+}
+
+class _HomePageBodyState extends State<HomePageBody> {
+   //List allEvents=[];
+  late List foundEvents;
+
+  //EventService _eventService =EventService();
+  @override
+  void initState() {
+    super.initState();
+    //atama();
+
+    _runFilter("");
+
+    //print("Uzunluk"+datalar.length.toString());
+    //_runFilter("");
+  }
+ 
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -12,9 +33,42 @@ class HomePageBody extends StatelessWidget {
         color: ThemePurple.darkPurple,
         child: Column(
           children: [
-            _buildHomeEventsContainer(),
-            _buildHomeCategory(),
-            const HomePageBottom(),
+                      _buildHomeEventsContainer(),
+                      _buildHomeCategory(),
+
+                      Container(
+                alignment: Alignment.topLeft,
+                decoration: const BoxDecoration(
+                    color: ThemePurple.whiteColor,
+                    borderRadius: HomePageRadius.homeBottomContainer),
+                child: Padding(
+                  padding: HomePadding.homeBottomContainerPadding,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                      HomePageString.yakinEtkinlikler,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: HomePageSize.homeBottomYakinEtkinlikSize,
+                          ),),
+                      Column(
+                        children: [
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: foundEvents.length,
+                            itemBuilder: (context, index) {
+                              return EventCardWidget(foundEvent: foundEvents[index],);
+                            },
+                            
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+            ),
           ],
         ),
       ),
@@ -142,6 +196,7 @@ class HomePageBody extends StatelessWidget {
       ),
       child: Form(
         child: TextFormField(
+          onChanged: (value) => _runFilter(value),
           cursorColor: ThemePurple.whiteColor,
           decoration: InputDecoration(
             enabledBorder: const UnderlineInputBorder(
@@ -155,4 +210,28 @@ class HomePageBody extends StatelessWidget {
       ),
     );
   }
+
+ void _runFilter(String enteredKeyword) {
+    List<dynamic> results = [];
+    if (enteredKeyword.isEmpty) {
+      // if the search field is empty or only contains white-space, we'll display all users
+      results = events;
+    } else {
+      results = events
+          .where((place) =>
+              place.name!.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      // we use the toLowerCase() method to make it case-insensitive
+
+      print(results);
+    }
+
+    // Refresh the UI
+    setState(() {
+      foundEvents = results;
+    });
+  }
+
+  
+
 }
