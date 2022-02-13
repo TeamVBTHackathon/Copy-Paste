@@ -1,14 +1,28 @@
 part of home_page_view;
 
-class HomePageBottom extends StatelessWidget {
-  const HomePageBottom({Key? key}) : super(key: key);
+class HomePageBottom extends StatefulWidget {
+  final List? foundEvents;
+  const HomePageBottom({
+    this.foundEvents,
+    Key? key}) : super(key: key);
 
+  @override
+  State<HomePageBottom> createState() => _HomePageBottomState();
+}
+
+class _HomePageBottomState extends State<HomePageBottom> {
   final String _eventDay = "21";
+
   final String _eventMonth = "MAR";
+
   final String _eventDistance = "1.4 KM AWAY";
+
   final String _eventName = "Local Hero";
+
   final String _eventLocation = "South Statue Art Center";
+
   final String _buttonText = "View Event";
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,9 +43,9 @@ class HomePageBottom extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
-                    return _buildEventsImage(context);
+                    return _buildEventsImage(context,index);
                   },
-                  itemCount: 6,
+                  itemCount: widget.foundEvents!.length,
                 ),
               ],
             ),
@@ -41,7 +55,7 @@ class HomePageBottom extends StatelessWidget {
     );
   }
 
-  Widget _buildEventsImage(BuildContext context) {
+  Widget _buildEventsImage(BuildContext context,int index) {
     return Padding(
       padding: HomePadding.homeBottomListViewPadding,
       child: Row(
@@ -70,7 +84,7 @@ class HomePageBottom extends StatelessWidget {
                 Padding(
                   padding: HomePadding.homeBottomEventNamePadding,
                   child: Text(
-                    _eventName,
+                    widget.foundEvents![index].name,
                     style: Theme.of(context)
                         .textTheme
                         .headline5!

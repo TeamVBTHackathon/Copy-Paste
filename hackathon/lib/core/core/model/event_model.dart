@@ -1,14 +1,16 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class EventModel {
-  String id;
-  String name;
-  String description;
-  String image;
-  String location;
-  String date;
-  String time;
-  String category;
+  String? id;
+  String? name;
+  String? description;
+  String? image;
+  String? location;
+  String? date;
+  String? time;
+  String? category;
   List<String>? comments;
   List<String>? likes;
   EventModel({
@@ -23,6 +25,7 @@ class EventModel {
     this.comments,
     this.likes,
   });
+
 
   Map<String, dynamic> toMap() {
     return {
@@ -39,7 +42,24 @@ class EventModel {
     };
   }
 
-  factory EventModel.fromMap(Map<String, dynamic> map) {
+   EventModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> snapshot)
+      : this.fromJson(snapshot.data()!,);
+
+      EventModel.fromJson(Map<String, dynamic> json,) {
+    id = json['id'];
+    name = json['name'];
+    description = json['description'];
+    image = json['image'];
+    location = json['location'];
+    date = json['date'];
+    time = json['time'];
+    category = json['category'];
+     
+       
+
+  }
+
+  factory EventModel.fromMap(DocumentSnapshot<Map<String, dynamic>> map) {
     return EventModel(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
@@ -56,6 +76,6 @@ class EventModel {
 
   String toJson() => json.encode(toMap());
 
-  factory EventModel.fromJson(String source) =>
-      EventModel.fromMap(json.decode(source));
+  // factory EventModel.fromJson(String source) =>
+  //     EventModel.fromMap(json.decode(source));
 }

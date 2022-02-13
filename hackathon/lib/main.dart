@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/home-page',
       routes: {
         OnBoardingView.routeName: (ctx) => const OnBoardingView(),
         LoginView.routeName: (ctx) => const LoginView(),
