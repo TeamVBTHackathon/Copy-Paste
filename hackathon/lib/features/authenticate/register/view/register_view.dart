@@ -12,6 +12,7 @@ import 'package:hackathon/features/authenticate/register/service/register_servic
 import 'package:hackathon/features/authenticate/widgets/animation_widget.dart';
 import 'package:hackathon/features/authenticate/widgets/custom_text_form_field_widget.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
+import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:image_picker/image_picker.dart';
 
 part 'parts/register_view_body.dart';

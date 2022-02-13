@@ -9,6 +9,7 @@ import 'package:hackathon/features/authenticate/register/view/register_view.dart
 import 'package:hackathon/features/authenticate/widgets/animation_widget.dart';
 import 'package:hackathon/features/authenticate/widgets/custom_text_form_field_widget.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
+import 'package:hackathon/features/navbar/navbar.dart';
 
 part 'parts/login_view_body.dart';
 
