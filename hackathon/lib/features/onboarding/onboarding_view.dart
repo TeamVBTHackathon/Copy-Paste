@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon/features/authenticate/login/view/login_view.dart';
-import 'package:hackathon/features/homepage/view/home_page_view.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 
 import 'package:hackathon/core/constants/strings/onboarding_strings.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
@@ -27,32 +26,36 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       Slide(
         description: OnboardingStrings.desciption1,
         pathImage: "asset/images/undraw1.png",
-        backgroundColor: Colors.white,
-        styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
+        backgroundColor: ThemePurple.whiteColor,
+        styleDescription:
+            const TextStyle(color: ThemePurple.blackColor, fontSize: 20.0),
       ),
     );
     slides.add(
       Slide(
         description: OnboardingStrings.desciption2,
         pathImage: "asset/images/undraw2.png",
-        backgroundColor: Colors.white,
-        styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
+        backgroundColor: ThemePurple.whiteColor,
+        styleDescription:
+            const TextStyle(color: ThemePurple.blackColor, fontSize: 20.0),
       ),
     );
     slides.add(
       Slide(
         description: OnboardingStrings.desciption3,
         pathImage: "asset/images/undraw3.png",
-        backgroundColor: Colors.white,
-        styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
+        backgroundColor: ThemePurple.whiteColor,
+        styleDescription:
+            const TextStyle(color: ThemePurple.blackColor, fontSize: 20.0),
       ),
     );
     slides.add(
       Slide(
         description: OnboardingStrings.desciption4,
         pathImage: "asset/images/undraw4.png",
-        backgroundColor: Colors.white,
-        styleDescription: const TextStyle(color: Colors.black, fontSize: 20.0),
+        backgroundColor: ThemePurple.whiteColor,
+        styleDescription:
+            const TextStyle(color: ThemePurple.blackColor, fontSize: 20.0),
       ),
     );
   }
@@ -64,21 +67,21 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget renderDoneBtn() {
     return const Text(
       OnboardingStrings.buttonDone,
-      style: TextStyle(color: Color.fromRGBO(255, 110, 161, 1.0)),
+      style: TextStyle(color: ThemePurple.darkPurple),
     );
   }
 
   Widget renderSkipBtn() {
     return const Text(
       OnboardingStrings.buttonSkip,
-      style: TextStyle(color: Colors.black45),
+      style: TextStyle(color: ThemePurple.blackColor),
     );
   }
 
   Widget renderNextBtn() {
     return const Text(
       OnboardingStrings.buttonNext,
-      style: TextStyle(color: Colors.black45),
+      style: TextStyle(color: ThemePurple.blackColor),
     );
   }
 
@@ -86,8 +89,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return IntroSlider(
       slides: slides,
-      colorDot: const Color(0x33D02090), //degisecek
-      colorActiveDot: const Color.fromRGBO(255, 110, 161, 1.0), //degisecek
+      colorDot: ThemePurple.lightPurple,
+      colorActiveDot: ThemePurple.darkPurple,
       sizeDot: 13.0,
       renderSkipBtn: renderSkipBtn(),
       renderDoneBtn: renderDoneBtn(),

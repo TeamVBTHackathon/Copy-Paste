@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String headline;
@@ -9,15 +10,11 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return PreferredSize(
       preferredSize: preferredSize,
       child: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: ThemePurple.transparentColor,
         elevation: 0.0,
         title: Text(
           headline,
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: ThemePurple.blackColor),
         ),
       ),
     );

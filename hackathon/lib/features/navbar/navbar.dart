@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/eventDetail/view/event_detail_view.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:hackathon/features/messanger/messanger_view.dart';
 import 'package:hackathon/features/profile/view/profile_view.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
   static const routeName = '/';
 
   @override
@@ -30,15 +31,15 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ThemePurple.whiteColor,
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
-        backgroundColor: Colors.white,
+        backgroundColor: ThemePurple.whiteColor,
         onTap: onTap,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black54,
-        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        selectedItemColor: ThemePurple.darkPurple,
+        unselectedItemColor: ThemePurple.greyOpacityColor,
         showUnselectedLabels: false,
         showSelectedLabels: false,
         elevation: 0,
