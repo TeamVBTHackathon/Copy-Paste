@@ -45,6 +45,8 @@ dependencies:
   intro_slider: ^3.0.3
   wave: ^0.2.0
   line_icons: ^2.0.1
+  flutter_native_splash: ^2.0.2
+
 
 
 dev_dependencies:
