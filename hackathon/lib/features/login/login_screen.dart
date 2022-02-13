@@ -9,6 +9,7 @@ import 'package:hackathon/features/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+  static const routeName = '/login';
 
   @override
   _LoginScreenState createState() => _LoginScreenState();

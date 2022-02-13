@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
 
 import 'package:hackathon/features/landing/service/global_methods.dart';
+import 'package:hackathon/features/login/login_screen.dart';
 import 'package:hackathon/features/signup/signup_screen.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -37,25 +38,6 @@ class _LandingScreenState extends State<LandingScreen>
       setState(() {
         _isLoading = false;
       });
-    }
-  }
-
-  Future<void> _googleSignIn() async {
-    final googleSignIn = GoogleSignIn();
-    final googleAccount = await googleSignIn.signIn();
-
-    if (googleAccount != null) {
-      final googleAuth = await googleAccount.authentication;
-      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-        try {
-          final authResult = await _auth.signInWithCredential(
-              GoogleAuthProvider.credential(
-                  idToken: googleAuth.idToken,
-                  accessToken: googleAuth.accessToken));
-        } catch (e) {
-          _globalMethods.authDialog(context, e.toString());
-        }
-      }
     }
   }
 
@@ -144,7 +126,7 @@ class _LandingScreenState extends State<LandingScreen>
         primary: ThemePurple.darkPurple,
       ),
       onPressed: () {
-        //    Navigator.of(context).pushNamed(SignUpScreen.routeName);
+        Navigator.pushNamed(context, SignUpScreen.routeName);
       },
       child:
           const Text('Kayıt', style: TextStyle(color: ThemePurple.whiteColor)),
@@ -157,7 +139,7 @@ class _LandingScreenState extends State<LandingScreen>
         primary: ThemePurple.darkPurple,
       ),
       onPressed: () {
-        //  Navigator.of(context).pushNamed(LoginView.routeName);
+        Navigator.pushNamed(context, LoginScreen.routeName);
       },
       child:
           const Text('Giriş', style: TextStyle(color: ThemePurple.whiteColor)),

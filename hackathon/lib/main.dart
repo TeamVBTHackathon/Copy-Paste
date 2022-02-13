@@ -10,6 +10,7 @@ import 'package:hackathon/features/messanger/messanger_view.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/onboarding/onboarding_view.dart';
 import 'package:hackathon/features/profile/view/profile_view.dart';
+import 'package:hackathon/features/signup/signup_screen.dart';
 
 import 'features/createEvent/create_event.dart';
 import 'features/eventDetail/view/event_detail_view.dart';
@@ -30,9 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
-      //home: HomePageView(),
-
-      initialRoute: '/home-page',
+      initialRoute: OnBoardingView.routeName,
       routes: {
         OnBoardingView.routeName: (ctx) => const OnBoardingView(),
         LandingScreen.routeName: (ctx) => const LandingScreen(),
@@ -41,6 +40,8 @@ class MyApp extends StatelessWidget {
         CreateEvent.routeName: (ctx) => const CreateEvent(),
         MessangerView.routeName: (ctx) => const MessangerView(),
         ProfileView.routeName: (ctx) => const ProfileView(),
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
+        SignUpScreen.routeName: (ctx) => const SignUpScreen(),
       },
     );
   }

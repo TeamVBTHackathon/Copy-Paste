@@ -12,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
+  static const routeName = '/signup';
 
   @override
   _SignUpScreenState createState() => _SignUpScreenState();

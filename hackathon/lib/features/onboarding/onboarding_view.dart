@@ -11,7 +11,7 @@ import 'package:intro_slider/slide_object.dart';
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
 
-  static const routeName = '/';
+  static const routeName = '/onboarding-view';
 
   @override
   _OnBoardingViewState createState() => _OnBoardingViewState();

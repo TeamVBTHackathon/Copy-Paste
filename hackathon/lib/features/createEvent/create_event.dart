@@ -52,7 +52,6 @@ class _CreateEventState extends State<CreateEvent> {
 
   @override
   void initState() {
-    // TODO: implement initState
     getCategories();
 
     super.initState();
@@ -97,7 +96,7 @@ class _CreateEventState extends State<CreateEvent> {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           //color: Colors.black,
                           height: context.height * 1 / 11,
                           child: SubmitButton(
@@ -149,7 +148,7 @@ class _CreateEventState extends State<CreateEvent> {
                       builder: (context) => CupertinoActionSheet(
                             actions: [BuildPickerOfCategory()],
                             cancelButton: CupertinoActionSheetAction(
-                              child: Text("Cancel"),
+                              child: const Text("Ok"),
                               onPressed: () => Navigator.pop(context),
                             ),
                           ));
