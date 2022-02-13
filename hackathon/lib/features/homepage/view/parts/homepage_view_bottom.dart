@@ -1,47 +1,17 @@
 part of home_page_view;
 
-class HomePageBottom extends StatelessWidget {
-  const HomePageBottom({Key? key}) : super(key: key);
 
-  final String _eventDay = "21";
-  final String _eventMonth = "MAR";
-  final String _eventDistance = "1.4 KM AWAY";
-  final String _eventName = "Local Hero";
-  final String _eventLocation = "South Statue Art Center";
-  final String _buttonText = "View Event";
+
+class EventCardWidget extends StatelessWidget {
+   EventCardWidget({
+    Key? key,
+    required this.foundEvent,
+  }) : super(key: key);
+
+  EventModel  foundEvent;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topLeft,
-      decoration: const BoxDecoration(
-          color: ThemePurple.whiteColor,
-          borderRadius: HomePageRadius.homeBottomContainer),
-      child: Padding(
-        padding: HomePadding.homeBottomContainerPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildNearestEvents(context),
-            Column(
-              children: [
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) {
-                    return _buildEventsImage(context);
-                  },
-                  itemCount: 6,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEventsImage(BuildContext context) {
     return Padding(
       padding: HomePadding.homeBottomListViewPadding,
       child: Row(
@@ -53,8 +23,8 @@ class HomePageBottom extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(_eventDay),
-                Text(_eventMonth),
+                Text(foundEvent.name.toString()),
+               // Text(_eventMonth),
               ],
             ),
           ),
@@ -64,37 +34,37 @@ class HomePageBottom extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _eventDistance,
+                  "1.4 km",
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
                 Padding(
                   padding: HomePadding.homeBottomEventNamePadding,
                   child: Text(
-                    _eventName,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5!
-                        .copyWith(fontSize: HomePageSize.homeBottomEventName),
+    foundEvent.name.toString(),
+    style: Theme.of(context)
+        .textTheme
+        .headline5!
+        .copyWith(fontSize: HomePageSize.homeBottomEventName),
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    HomePageIcon.homeBottomLocationIcon,
-                    Text(_eventLocation)
+    HomePageIcon.homeBottomLocationIcon,
+    Text(foundEvent.location.toString())
                   ],
                 ),
                 SizedBox(
                   width: context.highWidthValue * 2,
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(_buttonText),
-                    style: ElevatedButton.styleFrom(
-                      primary: ThemePurple.darkPurple,
-                      textStyle: Theme.of(context).textTheme.button!.copyWith(
-                            color: ThemePurple.whiteColor,
-                          ),
-                    ),
+    onPressed: () {},
+    child: Text("view event"),
+    style: ElevatedButton.styleFrom(
+      primary: ThemePurple.darkPurple,
+      textStyle: Theme.of(context).textTheme.button!.copyWith(
+            color: ThemePurple.whiteColor,
+          ),
+    ),
                   ),
                 ),
               ],
@@ -104,13 +74,4 @@ class HomePageBottom extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildNearestEvents(BuildContext context) {
-    return Text(
-      HomePageString.yakinEtkinlikler,
-      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-            fontSize: HomePageSize.homeBottomYakinEtkinlikSize,
-          ),
-    );
   }
-}

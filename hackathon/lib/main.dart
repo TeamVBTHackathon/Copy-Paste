@@ -27,24 +27,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Material App',
-        theme: ThemePurple().theme,
-        debugShowCheckedModeBanner: false,
-        home: EventDetailView()
-        // initialRoute: '/',
-        // routes: {
-        //   OnBoardingView.routeName: (ctx) => const OnBoardingView(),
-        //   LoginView.routeName: (ctx) => const LoginView(),
-        //   RegisterView.routeName: (ctx) => const RegisterView(),
-        //   LandingScreen.routeName: (ctx) => const LandingScreen(),
-        //   HomePageView.routeName: (ctx) => const HomePageView(),
-        //   EventDetailView.routeName: (ctx) => const EventDetailView(),
-        //   CreateEvent.routeName: (ctx) => const CreateEvent(),
-        //   MessangerView.routeName: (ctx) => const MessangerView(),
-        //   ProfileView.routeName: (ctx) => const ProfileView(),
-        // },
+      title: 'Material App',
+      theme: ThemePurple().theme,
+      debugShowCheckedModeBanner: false,
+      //home: HomePageView(),
 
-        );
+      initialRoute: '/home-page',
+      routes: {
+        OnBoardingView.routeName: (ctx) => const OnBoardingView(),
+        LandingScreen.routeName: (ctx) => const LandingScreen(),
+        HomePageView.routeName: (ctx) => const HomePageView(),
+        EventDetailView.routeName: (ctx) => const EventDetailView(),
+        CreateEvent.routeName: (ctx) => const CreateEvent(),
+        MessangerView.routeName: (ctx) => const MessangerView(),
+        ProfileView.routeName: (ctx) => const ProfileView(),
+      },
+    );
   }
 }
 
