@@ -30,14 +30,15 @@ class MyApp extends StatelessWidget {
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
 
-      home: MainPage(),
-
-
-
       //MainScreen(),
 
-
-      // initialRoute: '/',
+      initialRoute: LandingScreen.routeName,
+      routes: {
+        LoginView.routeName: (context) => const LoginView(),
+        RegisterView.routeName: (context) => const RegisterView(),
+        LandingScreen.routeName: (context) => const LandingScreen(),
+        HomePageView.routeName: (context) => const HomePageView(),
+      },
       // //const AuthStateScreen(),
       // routes: {
       //   LoginView.routeName: (ctx) => const LoginView(),
