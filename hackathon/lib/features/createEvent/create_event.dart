@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 library create_event.dart;
 
 import 'dart:io';
@@ -75,29 +77,19 @@ class _CreateEventState extends State<CreateEvent> {
                     child: Column(
                       children: [
                         Container(
-                          //color: Colors.amber,
-                          //height: context.height*7.5/10,
                           child: Column(
                             children: [
-                              //select Photo
                               AddImageContainer(_image),
-
-                              //select Event Title
                               EventTitleContent(
                                   titleController: titleController),
-
-                              // add event description
                               EventDescriptionContent(
                                 descriptionController: descriptionController,
                               ),
-
-                              //select event Category
                               selectCategory(),
                             ],
                           ),
                         ),
                         SizedBox(
-                          //color: Colors.black,
                           height: context.height * 1 / 11,
                           child: SubmitButton(
                             formKey: _formKey,
@@ -174,7 +166,7 @@ class _CreateEventState extends State<CreateEvent> {
             .map((e) => Center(
                     child: Text(
                   e,
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 )))
             .toList(),
       ),
