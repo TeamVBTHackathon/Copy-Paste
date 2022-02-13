@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
-import 'package:hackathon/features/authenticate/login/view/login_view.dart';
-import 'package:hackathon/features/authenticate/register/view/register_view.dart';
+
 import 'package:hackathon/features/landing/service/global_methods.dart';
+import 'package:hackathon/features/signup/signup_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class _LandingScreenState extends State<LandingScreen>
 
   final List<String> _images = [
     'asset/images/landing1.png',
-    'asset/images/landing2.png',
+    'asset/images/landing1.png',
   ];
 
   @override
@@ -144,7 +144,7 @@ class _LandingScreenState extends State<LandingScreen>
         primary: ThemePurple.darkPurple,
       ),
       onPressed: () {
-        Navigator.of(context).pushNamed(RegisterView.routeName);
+        //    Navigator.of(context).pushNamed(SignUpScreen.routeName);
       },
       child:
           const Text('Kayıt', style: TextStyle(color: ThemePurple.whiteColor)),
@@ -157,7 +157,7 @@ class _LandingScreenState extends State<LandingScreen>
         primary: ThemePurple.darkPurple,
       ),
       onPressed: () {
-        Navigator.of(context).pushNamed(LoginView.routeName);
+        //  Navigator.of(context).pushNamed(LoginView.routeName);
       },
       child:
           const Text('Giriş', style: TextStyle(color: ThemePurple.whiteColor)),

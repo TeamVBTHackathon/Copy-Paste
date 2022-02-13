@@ -17,14 +17,12 @@ part 'parts/create_event_selectimage.dart';
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({Key? key}) : super(key: key);
- static const routeName = '/create-event';
+  static const routeName = '/create-event';
   @override
   _CreateEventState createState() => _CreateEventState();
 }
 
 class _CreateEventState extends State<CreateEvent> {
-
-  
   final _formKey = GlobalKey<FormState>();
   int selectValue = 0;
   List items = ["Bussiness", "Public Fun", "Meet"];

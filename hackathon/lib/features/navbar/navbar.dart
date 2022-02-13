@@ -7,7 +7,7 @@ import 'package:hackathon/features/profile/view/profile_view.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
-  static const routeName = 'navbar';
+  static const routeName = '/';
 
   @override
   State<MainPage> createState() => _MainPageState();
