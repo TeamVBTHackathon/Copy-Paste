@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         CreateEvent.routeName: (ctx) => const CreateEvent(),
         MessangerView.routeName: (ctx) => const MessangerView(),
         ProfileView.routeName: (ctx) => const ProfileView(),
+        MainPage.routeName: (ctx) => const MainPage(),
       },
 
     );

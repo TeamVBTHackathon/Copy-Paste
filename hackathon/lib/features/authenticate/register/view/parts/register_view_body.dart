@@ -249,7 +249,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     context
                         .read<RegisterViewCubit>()
                         .updateItems(storeImageUrl);
-                    Navigator.pushNamed(context, HomePageView.routeName);
+                    Navigator.pushNamed(context, MainPage.routeName);
                   },
             child: Padding(
               padding: EdgeInsets.all(context.height * 0.01),

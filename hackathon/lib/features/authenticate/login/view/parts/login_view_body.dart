@@ -85,7 +85,7 @@ class LoginViewBody extends StatelessWidget {
               ? null
               : () {
                   context.read<LoginViewModelCubit>().postUserModel();
-                  Navigator.pushNamed(context, HomePageView.routeName);
+                  Navigator.pushNamed(context, MainPage.routeName);
                 },
           child: const Text('Save'),
         );

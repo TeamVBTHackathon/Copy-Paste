@@ -61,7 +61,7 @@ class _LandingScreenState extends State<LandingScreen>
 
   final List<String> _images = [
     'asset/images/landing1.png',
-    'asset/images/landing1.png',
+    'asset/images/landing2.png',
   ];
 
   @override

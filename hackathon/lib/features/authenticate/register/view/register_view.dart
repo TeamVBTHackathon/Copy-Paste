@@ -14,6 +14,8 @@ import 'package:hackathon/features/authenticate/widgets/custom_text_form_field_w
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../navbar/navbar.dart';
+
 part 'parts/register_view_body.dart';
 
 class RegisterView extends StatefulWidget {
