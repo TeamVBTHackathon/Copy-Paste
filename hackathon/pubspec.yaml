@@ -28,26 +28,26 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: ^8.0.2
+  flutter_bloc: ^8.0.1
+  equatable: ^2.0.3
   build_runner: ^2.1.7
   cloud_firestore: ^3.1.6
   cupertino_icons: ^1.0.2
-  equatable: ^2.0.3
   firebase_auth: ^3.3.5
   firebase_core: ^1.11.0
   firebase_storage: ^10.2.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
-  geocoding: ^2.0.2
-  geolocator: ^8.1.1
   google_sign_in: ^5.2.3
-  image_picker: ^0.8.4+4
   intro_slider: ^3.0.3
   wave: ^0.2.0
-  line_icons: ^2.0.1
-
 
 dev_dependencies:
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
@@ -63,10 +63,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - asset/images/undraw1.png
-    - asset/images/undraw2.png
-    - asset/images/undraw3.png
-    - asset/images/undraw4.png
+    - asset/images/
+  #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

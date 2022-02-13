@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon/features/homepage/view/home_page_view.dart';
+import 'package:hackathon/features/homepage/main_screen.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
 
 class AuthStateScreen extends StatelessWidget {
@@ -17,7 +17,7 @@ class AuthStateScreen extends StatelessWidget {
           );
         } else if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.hasData) {
-            return HomePageView();
+            return MainScreen();
           } else {
             return const LandingScreen();
           }

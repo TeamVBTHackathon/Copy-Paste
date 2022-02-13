@@ -10,7 +10,7 @@ class LoginService extends ILoginService {
   Future<LoginResponseModel?> postUserLogin(LoginRequestModel model) async {
     try {
       print("Kayıt ediliyor");
-      await _auth.signInWithEmailAndPassword(
+      final response = await _auth.signInWithEmailAndPassword(
           email: model.email, password: model.password);
     } catch (e) {
       print("Kayıtta hata var");

@@ -12,13 +12,11 @@ extension MediaQueryExtension on BuildContext {
   double get normalHightValue => height * 0.02;
   double get mediumHightValue => height * 0.04;
   double get highHightValue => height * 0.08;
-  double get hightValue => height * 0.2;
 
   double get lowWidthValue => width * 0.01;
   double get normalWidthValue => width * 0.02;
   double get mediumWidthValue => width * 0.04;
-  double get highWidthValue => width * 0.2;
-  double get widthValue => height * 0.1;
+  double get highWidthValue => width * 0.08;
 }
 
 extension ThemeExtension on BuildContext {
@@ -34,7 +32,6 @@ extension PaddingExtension on BuildContext {
   EdgeInsets get paddingHightNormal => EdgeInsets.all(normalHightValue);
   EdgeInsets get paddingHightMedium => EdgeInsets.all(mediumHightValue);
   EdgeInsets get paddingHightHigh => EdgeInsets.all(highHightValue);
-  EdgeInsets get noPadding => const EdgeInsets.all(0.0);
 
   EdgeInsets get paddingWithLowLow => EdgeInsets.all(lowWidthValue);
   EdgeInsets get paddingWithLowNormal => EdgeInsets.all(normalWidthValue);
