@@ -15,12 +15,7 @@ class ScrollRowWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EventDetailView(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, EventDetailView.routeName);
                   },
                   child: Container(
                     margin: context.paddingWithLowNormal,
