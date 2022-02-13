@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         theme: ThemePurple().theme,
         debugShowCheckedModeBanner: false,
-        home: LoginScreen()
+        home: EventDetailView()
         // initialRoute: '/',
         // routes: {
         //   OnBoardingView.routeName: (ctx) => const OnBoardingView(),
@@ -47,3 +47,20 @@ class MyApp extends StatelessWidget {
         );
   }
 }
+
+//**
+//*Anasayfa
+    //  Katagori (->)
+    //  Anasayfa da etkinlikler (->) Etkinlik detaya gidecek
+    //  Etkinlik detay  commnet(buton) -> comments (->) yorum yapılacak
+    //  
+    //  profil çıkış butonu (->) Event eklemek için gerekli  Gökhan 
+    //  chat static   
+       
+    //  
+    // 
+//  
+//
+//
+//
+// */

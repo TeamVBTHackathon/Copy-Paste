@@ -1,82 +1,77 @@
+// ignore_for_file: must_be_immutable
+
 part of create_event.dart;
 
-
-
-
 class AddImageContainer extends StatefulWidget {
-     File? _image;
-    
-    AddImageContainer(this._image);
+  File? _image;
+
+  AddImageContainer(this._image, {Key? key}) : super(key: key);
 
   @override
   State<AddImageContainer> createState() => _AddImageContainerState();
 }
 
 class _AddImageContainerState extends State<AddImageContainer> {
-  
-     List icon=[Icons.camera_alt,Icons.image,Icons.remove_circle];
+  List icon = [Icons.camera_alt, Icons.image, Icons.remove_circle];
 
-     List iconText = ["Camera","Gallery","Remove"];
-     
-     
+  List iconText = ["Camera", "Gallery", "Remove"];
 
   @override
   Widget build(BuildContext context) {
     return Row(
-                        children: [
-                          Expanded(
-                            child: widget._image== null
-                                ? Container(
-                                    height: 200,
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  )
-                                : Container(
-                                    height: 200,
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    child:Image.file(widget._image!)
-                                  ),
-                          ),
+      children: [
+        Expanded(
+          child: widget._image == null
+              ? Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.grey,
+                    ),
+                  ),
+                )
+              : Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  child: Image.file(widget._image!)),
+        ),
 
-                          //select Menu
-                          Container(
-                            height: 200,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                //selecting event photo
-                                for(var i =0;i<3;i++)
-
-                                InkWell(
-                                  onTap: ()=>i==0?_getCameraImage():i==1?_getGalleryImage():_removeImage(),
-                                  child: Container(
-                                    width: context.width/4,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Icon(icon[i]),
-                                      Text(iconText[i])
-                                    ],
-                                  ),),
-                                ),
-                               
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
+        //select Menu
+        SizedBox(
+          height: 200,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              //selecting event photo
+              for (var i = 0; i < 3; i++)
+                InkWell(
+                  onTap: () => i == 0
+                      ? _getCameraImage()
+                      : i == 1
+                          ? _getGalleryImage()
+                          : _removeImage(),
+                  child: SizedBox(
+                    width: context.width / 4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [Icon(icon[i]), Text(iconText[i])],
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   Future _getCameraImage() async {
@@ -98,9 +93,4 @@ class _AddImageContainerState extends State<AddImageContainer> {
       widget._image = null;
     });
   }
-
-
-
 }
-
-  

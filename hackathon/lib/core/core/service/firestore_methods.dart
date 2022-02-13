@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,19 +9,44 @@ import 'package:uuid/uuid.dart';
 class FirestoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<String> uploadEvent({
+    required String category,
+    required String title,
+    required String description,
+    Uint8List? file,
+    String? location,
+    String? date,
+  }) async {
+    String photoUrl = '';
+    if (file != null) {
+      String photoUrl =
+          await StorageMethods().uploadImageToStorage('posts', file, true);
+    }
+    String id = Uuid().v4();
+
+    await _firestore.collection('events').doc(id).set({
+      'id': id,
+      'category': category,
+      'title': title,
+      'description': description,
+      'location': location ?? '',
+      'date': date ?? '',
+      'image': photoUrl,
+      'commnets': [],
+    });
+    return id;
+  }
+
   // upload post
   Future<String> uploadPost(
     String description,
-    Uint8List file,
+    File? file,
     String uid,
     String username,
     String profImage,
   ) async {
     String res = "Some error occured";
     try {
-      String photoUrl =
-          await StorageMethods().uploadImageToStorage('posts', file, true);
-
       String postId = const Uuid().v1();
 
       Post post = Post(
@@ -29,7 +55,7 @@ class FirestoreMethods {
           username: username,
           postId: postId,
           datePublished: DateTime.now(),
-          postUrl: photoUrl,
+          postUrl: '',
           profImage: profImage,
           likes: []);
 

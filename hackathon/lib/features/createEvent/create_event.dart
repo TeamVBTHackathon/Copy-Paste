@@ -1,8 +1,10 @@
 library create_event.dart;
 
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/core/service/firestore_methods.dart';
 import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/core/init/theme/theme.dart';
 import 'package:hackathon/features/createEvent/globalmethods/globalemethods.dart';
@@ -25,15 +27,36 @@ class CreateEvent extends StatefulWidget {
 class _CreateEventState extends State<CreateEvent> {
   final _formKey = GlobalKey<FormState>();
   int selectValue = 0;
-  List items = ["Bussiness", "Public Fun", "Meet"];
+  List items = ["Sosyal Sorumluluk"];
   var productTitle = '';
+  File? _image;
 
-  final TextEditingController _categoryController = TextEditingController();
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
   GlobalMethods _globalMethods = GlobalMethods();
 
   File? image;
+
+  Future<void> getCategories() async {
+    await FirebaseFirestore.instance
+        .collection('categroies')
+        .get()
+        .then((value) {
+      setState(() {
+        items = value.docs.map((e) => e.data()['name']).toList();
+        print(items);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getCategories();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,15 +81,15 @@ class _CreateEventState extends State<CreateEvent> {
                           child: Column(
                             children: [
                               //select Photo
-                              AddImageContainer(image),
+                              AddImageContainer(_image),
 
                               //select Event Title
                               EventTitleContent(
-                                  titleController: _titleController),
+                                  titleController: titleController),
 
                               // add event description
                               EventDescriptionContent(
-                                descriptionController: _descriptionController,
+                                descriptionController: descriptionController,
                               ),
 
                               //select event Category
@@ -75,9 +98,15 @@ class _CreateEventState extends State<CreateEvent> {
                           ),
                         ),
                         Container(
-                            //color: Colors.black,
-                            height: context.height * 1 / 11,
-                            child: SubmitButton(_formKey))
+                          //color: Colors.black,
+                          height: context.height * 1 / 11,
+                          child: SubmitButton(
+                            formKey: _formKey,
+                            categoryController: categoryController,
+                            titleController: titleController,
+                            descriptionController: descriptionController,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -92,8 +121,8 @@ class _CreateEventState extends State<CreateEvent> {
 
   Container selectCategory() {
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 10),
-      padding: EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.only(top: 20, left: 10),
+      padding: const EdgeInsets.only(left: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(width: 1, color: Colors.black),
@@ -102,11 +131,11 @@ class _CreateEventState extends State<CreateEvent> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MyText(items[selectValue].toString(), 20, Colors.black),
-          Container(
+          SizedBox(
             height: 50,
             width: 200,
             child: CupertinoButton.filled(
-                child: Container(
+                child: const SizedBox(
                     //height: 150,
                     // color: Colors.black,
                     width: 250,
