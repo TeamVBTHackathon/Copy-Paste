@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/messanger/ChatDetailPage.dart';
 import 'package:hackathon/features/messanger/chatPageJson.dart';
 
 class MessangerView extends StatefulWidget {
   const MessangerView({Key? key}) : super(key: key);
-   static const routeName = '/messenger';
+  static const routeName = '/messenger';
 
   @override
   _MessangerViewState createState() => _MessangerViewState();
@@ -25,7 +26,7 @@ class _MessangerViewState extends State<MessangerView> {
       backgroundColor: Colors.white,
       centerTitle: true,
       elevation: 0,
-      title: Text(
+      title: const Text(
         "Message",
         style: TextStyle(color: Colors.black),
       ),
@@ -33,12 +34,12 @@ class _MessangerViewState extends State<MessangerView> {
         IconButton(
           splashRadius: 20,
           onPressed: () {},
-          icon: Icon(Icons.notifications, color: Colors.black),
+          icon: const Icon(Icons.notifications, color: Colors.black),
         ),
         IconButton(
           splashRadius: 20,
           onPressed: () {},
-          icon: Icon(Icons.more_vert, color: Colors.black),
+          icon: const Icon(Icons.more_vert, color: Colors.black),
         ),
       ],
     );
@@ -47,7 +48,7 @@ class _MessangerViewState extends State<MessangerView> {
   Widget getBody(size) {
     return ListView(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Padding(
@@ -75,7 +76,7 @@ class _MessangerViewState extends State<MessangerView> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Column(
@@ -83,7 +84,7 @@ class _MessangerViewState extends State<MessangerView> {
             return InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => ChatDetailPage()));
+                    MaterialPageRoute(builder: (_) => const ChatDetailPage()));
               },
               child: Padding(
                 padding:
@@ -121,8 +122,8 @@ class _MessangerViewState extends State<MessangerView> {
                         ),
                       ],
                     ),
-                    Spacer(),
-                    Container(
+                    const Spacer(),
+                    SizedBox(
                       height: 55,
                       width: (size.width - 30) * 0.7,
                       child: Column(
@@ -131,20 +132,21 @@ class _MessangerViewState extends State<MessangerView> {
                         children: [
                           Text(
                             chats[index]['name'],
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
                             chats[index]['message'],
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.grey),
                           )
                         ],
                       ),
                     ),
-                    Spacer(),
-                    Container(
+                    const Spacer(),
+                    SizedBox(
                       height: 55,
                       width: (size.width - 30) * 0.1,
                       child: Column(
@@ -153,28 +155,29 @@ class _MessangerViewState extends State<MessangerView> {
                         children: [
                           Text(
                             chats[index]['time'],
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.grey),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
                           chats[index]['unread'] != 0
                               ? Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    color: Colors.cyan,
+                                    color: ThemePurple.darkPurple,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 4, vertical: 3),
                                     child: Text(
                                       chats[index]['unread'].toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 11, color: Colors.white),
                                     ),
                                   ),
                                 )
-                              : Icon(Icons.more_horiz, size: 20)
+                              : const Icon(Icons.more_horiz, size: 20)
                         ],
                       ),
                     ),

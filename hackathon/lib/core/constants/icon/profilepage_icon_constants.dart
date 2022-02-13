@@ -10,5 +10,5 @@ class ProfilePageIcon {
   static Icon favouriteIcon =
       Icon(Icons.favorite, color: ThemePurple.greyOpacityColor);
   static const Icon commentIcon =
-      Icon(Icons.arrow_forward, color: ThemePurple.darkPurple);
+      Icon(Icons.comment, color: ThemePurple.darkPurple);
 }

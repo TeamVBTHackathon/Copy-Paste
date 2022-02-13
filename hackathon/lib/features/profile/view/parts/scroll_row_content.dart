@@ -5,12 +5,12 @@ class ScrollRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String randomImage = 'https://picsum.photos/200/300';
+    List<EventModel> list = events;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for (var i = 0; i < 8; i++) //cekilen etkinlik sayisi kadar donecek
+          for (var i = 0; i < list.length; i++)
             Column(
               children: [
                 InkWell(
@@ -19,7 +19,7 @@ class ScrollRowWidget extends StatelessWidget {
                   },
                   child: Container(
                     margin: context.paddingWithLowNormal,
-                    height: context.hightValue,
+                    height: context.height * 0.23,
                     width: context.widthValue,
                     decoration: BoxDecoration(
                       color: ThemePurple.whiteColor,
@@ -28,7 +28,7 @@ class ScrollRowWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         Expanded(
-                          flex: 10,
+                          flex: 15,
                           child: Card(
                             semanticContainer: true,
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -38,18 +38,18 @@ class ScrollRowWidget extends StatelessWidget {
                               borderRadius: ProfilePageRadius.generalRadius,
                             ),
                             child: Image.network(
-                              randomImage,
-                              fit: BoxFit.fill,
+                              list[i].image,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
                         Expanded(
-                          flex: 3,
+                          flex: 5,
                           child: Container(
                             margin: context.paddingWithLowNormal,
                             child: Center(
                               child: Text(
-                                ProfileStrings.eventName,
+                                list[i].name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText1!

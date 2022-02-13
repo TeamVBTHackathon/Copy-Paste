@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/core/service/auth_methods.dart';
+import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/navbar/navbar.dart';
 import 'package:hackathon/features/signup/signup_screen.dart';
@@ -7,9 +8,12 @@ import 'package:hackathon/features/utils/utils.dart';
 import 'package:hackathon/features/widgets/animation_widget.dart';
 import 'package:hackathon/features/widgets/text_field_input.dart';
 
+import '../../core/constants/padding/authenticate_padding.dart';
+import '../../core/constants/strings/authenticate_strings.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
-
+  static const routeName = '/login-screen';
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -59,79 +63,98 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(children: [
         AnimationWidget(querterTurns: 4),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: AuthenticatePadding.containerPadding,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(child: Container(), flex: 2),
-              // svg image
-              const SizedBox(height: 64),
-              // text field input for email
+              logo(context),
+              const SizedBox(height: 50),
               TextFieldInput(
                   textEditingController: _emailController,
-                  hintText: "Enter Your Email",
+                  hintText: AuthenticateStrings.emailString,
                   textInputType: TextInputType.emailAddress),
               const SizedBox(height: 24),
               TextFieldInput(
                 textEditingController: _passwordController,
-                hintText: "Enter Your Password",
+                hintText: AuthenticateStrings.passwordString,
                 textInputType: TextInputType.text,
                 isPass: true,
               ),
               const SizedBox(height: 24),
-              // button for login
-              InkWell(
-                onTap: loginUser,
-                child: _isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: ThemePurple.darkPurple,
-                        ),
-                      )
-                    : Container(
-                        child: const Text(
-                          'Log In',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: const ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(4))),
-                            color: ThemePurple.darkPurple),
-                      ),
-              ),
+              loginButton(),
               const SizedBox(
                 height: 12,
               ),
               Flexible(child: Container(), flex: 2),
-              // Textbuttons for register
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: const Text("Don't have an account ? "),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                  ),
-                  GestureDetector(
-                    onTap: navigateToSignUp,
-                    child: Container(
-                      child: const Text(
-                        "Sign Up ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                    ),
-                  ),
-                ],
-              )
+              text()
             ],
           ),
         ),
       ]),
+    );
+  }
+
+  logo(BuildContext context) {
+    return Container(
+      width: context.width * 0.45,
+      color: ThemePurple.transparentColor,
+      child: Image.asset(
+        "asset/images/logo.png",
+        fit: BoxFit.fill,
+      ),
+    );
+  }
+
+  text() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          child: Text(AuthenticateStrings.question),
+          padding: AuthenticatePadding.textPadding,
+        ),
+        GestureDetector(
+          onTap: navigateToSignUp,
+          child: Container(
+            child: Text(
+              AuthenticateStrings.registerButton,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            padding: AuthenticatePadding.textPadding,
+          ),
+        ),
+      ],
+    );
+  }
+
+  loginButton() {
+    return InkWell(
+      onTap: loginUser,
+      child: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: ThemePurple.darkPurple,
+              ),
+            )
+          : Container(
+              child: Text(
+                AuthenticateStrings.loginButton,
+                style: const TextStyle(color: Colors.white),
+              ),
+              width: double.infinity,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: const ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                ),
+                color: ThemePurple.darkPurple,
+              ),
+            ),
     );
   }
 }

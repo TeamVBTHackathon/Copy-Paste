@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -67,8 +66,6 @@ class AuthMethod {
     try {
       if (email.isNotEmpty || password.isNotEmpty) {
         // login user
-        UserCredential cred = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
         res = "success";
       } else {
         res = "Please fill all the fields";

@@ -1,9 +1,15 @@
 // ignore_for_file: must_be_immutable
 
-part of home_page_view;
+import 'package:flutter/material.dart';
+import 'package:hackathon/core/constants/Size/home_page_size_constants.dart';
+import 'package:hackathon/core/constants/icon/homepage_icon_constants.dart';
+import 'package:hackathon/core/constants/padding/home_page_padding.dart';
+import 'package:hackathon/core/core/model/event_model.dart';
+import 'package:hackathon/core/extension/context_extension.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 
-class EventCardWidget extends StatelessWidget {
-  EventCardWidget({
+class CategoriesEventCardWidget extends StatelessWidget {
+  CategoriesEventCardWidget({
     Key? key,
     required this.foundEvent,
   }) : super(key: key);
@@ -20,10 +26,7 @@ class EventCardWidget extends StatelessWidget {
           SizedBox(
             width: 125,
             height: 125,
-            child: Image.network(
-              foundEvent.image,
-              fit: BoxFit.contain,
-            ),
+            child: Image.network(foundEvent.image, fit: BoxFit.contain),
           ),
           Padding(
             padding: HomePadding.homeBottomEventInformationPadding,
@@ -37,7 +40,7 @@ class EventCardWidget extends StatelessWidget {
                 Padding(
                   padding: HomePadding.homeBottomEventNamePadding,
                   child: Text(
-                    foundEvent.name.toString(),
+                    foundEvent.name,
                     style: Theme.of(context)
                         .textTheme
                         .headline5!
@@ -48,18 +51,14 @@ class EventCardWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     HomePageIcon.homeBottomLocationIcon,
-                    Text(foundEvent.location.toString())
+                    Text(foundEvent.location)
                   ],
                 ),
                 SizedBox(
                   width: context.highWidthValue * 2,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  EventDetailView(foundEvent: foundEvent)));
+                      Navigator.pushNamed(context, "/event-detail");
                     },
                     child: const Text("view event"),
                     style: ElevatedButton.styleFrom(

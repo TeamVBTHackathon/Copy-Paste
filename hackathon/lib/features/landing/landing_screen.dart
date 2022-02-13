@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
 
-import 'package:hackathon/features/landing/service/global_methods.dart';
+import 'package:hackathon/features/login/login_screen.dart';
 import 'package:hackathon/features/signup/signup_screen.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -19,49 +18,12 @@ class _LandingScreenState extends State<LandingScreen>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+  // ignore: unused_field
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GlobalMethods _globalMethods = GlobalMethods();
-  bool _isLoading = false;
-
-  void _signInAnon() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      await _auth.signInAnonymously().then(
-          (value) => Navigator.canPop(context) ? Navigator.pop(context) : null);
-    } catch (error) {
-      _globalMethods.authDialog(context, error.toString());
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
-
-  Future<void> _googleSignIn() async {
-    final googleSignIn = GoogleSignIn();
-    final googleAccount = await googleSignIn.signIn();
-
-    if (googleAccount != null) {
-      final googleAuth = await googleAccount.authentication;
-      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-        try {
-          final authResult = await _auth.signInWithCredential(
-              GoogleAuthProvider.credential(
-                  idToken: googleAuth.idToken,
-                  accessToken: googleAuth.accessToken));
-        } catch (e) {
-          _globalMethods.authDialog(context, e.toString());
-        }
-      }
-    }
-  }
 
   final List<String> _images = [
     'asset/images/landing1.png',
-    'asset/images/landing1.png',
+    'asset/images/landing2.png',
   ];
 
   @override
@@ -144,7 +106,7 @@ class _LandingScreenState extends State<LandingScreen>
         primary: ThemePurple.darkPurple,
       ),
       onPressed: () {
-        //    Navigator.of(context).pushNamed(SignUpScreen.routeName);
+        Navigator.pushNamed(context, SignUpScreen.routeName);
       },
       child:
           const Text('Kayıt', style: TextStyle(color: ThemePurple.whiteColor)),
@@ -157,7 +119,7 @@ class _LandingScreenState extends State<LandingScreen>
         primary: ThemePurple.darkPurple,
       ),
       onPressed: () {
-        //  Navigator.of(context).pushNamed(LoginView.routeName);
+        Navigator.pushNamed(context, LoginScreen.routeName);
       },
       child:
           const Text('Giriş', style: TextStyle(color: ThemePurple.whiteColor)),
@@ -173,7 +135,7 @@ class _LandingScreenState extends State<LandingScreen>
         ),
         Center(
           child: Text(
-            "Event App' e",
+            "FluEvent' e",
             style: TextStyle(fontSize: 45, color: ThemePurple.whiteColor),
           ),
         ),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/core/model/user_model.dart';
@@ -46,7 +48,6 @@ class _PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
     final UserModel user = Provider.of<UserProvider>(context).getUser;
-    var width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
@@ -135,7 +136,7 @@ class _PostViewState extends State<PostView> {
               IconButton(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => CommentsScreen(
-                          snap: widget.snap,
+                          postId: widget.snap,
                         ))),
                 icon: const Icon(Icons.comment_outlined),
               ),

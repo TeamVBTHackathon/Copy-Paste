@@ -1,12 +1,14 @@
 library create_event.dart;
 
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/core/service/firestore_methods.dart';
 import 'package:hackathon/core/extension/context_extension.dart';
 import 'package:hackathon/core/init/theme/theme.dart';
-import 'package:hackathon/features/createEvent/globalmethods/globalemethods.dart';
 import 'package:hackathon/features/createEvent/widgets/mytext.dart';
+import 'package:hackathon/features/widgets/custom_appbar.dart';
 import 'package:image_picker/image_picker.dart';
 
 part 'parts/create_event_titlecontent.dart';
@@ -25,23 +27,45 @@ class CreateEvent extends StatefulWidget {
 class _CreateEventState extends State<CreateEvent> {
   final _formKey = GlobalKey<FormState>();
   int selectValue = 0;
-  List items = ["Bussiness", "Public Fun", "Meet"];
+  List items = ["Sosyal Sorumluluk"];
   var productTitle = '';
+  File? _image;
 
-  final TextEditingController _categoryController = TextEditingController();
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  GlobalMethods _globalMethods = GlobalMethods();
+  final TextEditingController categoryController = TextEditingController();
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
 
   File? image;
+
+  Future<void> getCategories() async {
+    await FirebaseFirestore.instance
+        .collection('categroies')
+        .get()
+        .then((value) {
+      setState(() {
+        items = value.docs.map((e) => e.data()['name']).toList();
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    getCategories();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(
+        headline: 'Etkinlik Oluştur',
+        isBackButton: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Form(
@@ -52,32 +76,31 @@ class _CreateEventState extends State<CreateEvent> {
                         const EdgeInsets.only(top: 60, left: 10, right: 10),
                     child: Column(
                       children: [
-                        Container(
-                          //color: Colors.amber,
-                          //height: context.height*7.5/10,
-                          child: Column(
-                            children: [
-                              //select Photo
-                              AddImageContainer(image),
+                        Column(
+                          children: [
+                            //select Photo
+                            AddImageContainer(_image),
 
-                              //select Event Title
-                              EventTitleContent(
-                                  titleController: _titleController),
+                            //select Event Title
+                            EventTitleContent(titleController: titleController),
 
-                              // add event description
-                              EventDescriptionContent(
-                                descriptionController: _descriptionController,
-                              ),
+                            // add event description
+                            EventDescriptionContent(
+                              descriptionController: descriptionController,
+                            ),
 
-                              //select event Category
-                              selectCategory(),
-                            ],
+                            selectCategory(),
+                          ],
+                        ),
+                        SizedBox(
+                          height: context.height * 1 / 11,
+                          child: SubmitButton(
+                            formKey: _formKey,
+                            categoryController: categoryController,
+                            titleController: titleController,
+                            descriptionController: descriptionController,
                           ),
                         ),
-                        Container(
-                            //color: Colors.black,
-                            height: context.height * 1 / 11,
-                            child: SubmitButton(_formKey))
                       ],
                     ),
                   ),
@@ -92,8 +115,8 @@ class _CreateEventState extends State<CreateEvent> {
 
   Container selectCategory() {
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 10),
-      padding: EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.only(top: 20, left: 10),
+      padding: const EdgeInsets.only(left: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(width: 1, color: Colors.black),
@@ -102,11 +125,11 @@ class _CreateEventState extends State<CreateEvent> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MyText(items[selectValue].toString(), 20, Colors.black),
-          Container(
+          SizedBox(
             height: 50,
             width: 200,
             child: CupertinoButton.filled(
-                child: Container(
+                child: const SizedBox(
                     //height: 150,
                     // color: Colors.black,
                     width: 250,
@@ -120,7 +143,7 @@ class _CreateEventState extends State<CreateEvent> {
                       builder: (context) => CupertinoActionSheet(
                             actions: [BuildPickerOfCategory()],
                             cancelButton: CupertinoActionSheetAction(
-                              child: Text("Cancel"),
+                              child: const Text("Cancel"),
                               onPressed: () => Navigator.pop(context),
                             ),
                           ));
@@ -131,6 +154,7 @@ class _CreateEventState extends State<CreateEvent> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   SizedBox BuildPickerOfCategory() {
     return SizedBox(
       height: 250,
@@ -146,7 +170,7 @@ class _CreateEventState extends State<CreateEvent> {
             .map((e) => Center(
                     child: Text(
                   e,
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 )))
             .toList(),
       ),

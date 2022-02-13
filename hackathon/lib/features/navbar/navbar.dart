@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
-import 'package:hackathon/features/eventDetail/view/event_detail_view.dart';
 import 'package:hackathon/features/homepage/view/home_page_view.dart';
 import 'package:hackathon/features/messanger/messanger_view.dart';
 import 'package:hackathon/features/profile/view/profile_view.dart';
@@ -15,10 +14,9 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    HomePageView(),
-    EventDetailView(),
-    MessangerView(),
-    ProfileView(),
+    const HomePageView(),
+    const MessangerView(),
+    const ProfileView(),
   ];
 
   int _selectedIndex = 0;
@@ -47,10 +45,6 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.apps),
             label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_sharp),
-            label: 'Bar',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),

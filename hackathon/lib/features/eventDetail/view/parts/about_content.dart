@@ -1,13 +1,15 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 part of event_detail_view;
 
 class AboutContentWidget extends StatelessWidget {
   final String _aboutText;
-  AboutContentWidget(this._aboutText);
+  const AboutContentWidget(this._aboutText);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       child: Column(
         children: [
           Row(
@@ -18,7 +20,14 @@ class AboutContentWidget extends StatelessWidget {
                 style: TextThemeLight.instance!.headline5,
               ),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CommentsScreen(
+                                  postId: "1",
+                                )));
+                  },
                   icon: Icon(
                     Icons.comment,
                     color: theme.primaryColor,
@@ -26,7 +35,7 @@ class AboutContentWidget extends StatelessWidget {
             ],
           ),
           Container(
-              padding: EdgeInsets.only(right: 10, bottom: 20),
+              padding: const EdgeInsets.only(right: 10, bottom: 20),
               child: Text(_aboutText, style: aboutStyle)),
         ],
       ),

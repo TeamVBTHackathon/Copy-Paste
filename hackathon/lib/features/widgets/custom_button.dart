@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
 
-  CustomButton(
+  const CustomButton(
       {Key? key,
       required this.text,
       required this.onPressed,
@@ -34,7 +34,6 @@ class CustomButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: textColor ?? Colors.white,
-              // TODO :
               fontSize: 18,
             ),
           ),

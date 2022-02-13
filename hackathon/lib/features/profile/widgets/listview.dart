@@ -1,6 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:hackathon/core/core/model/event_model.dart';
 
 import 'package:hackathon/core/extension/context_extension.dart';
+import 'package:hackathon/features/homepage/eventdata/eventdata.dart';
 
 import '../../../core/constants/icon/profilepage_icon_constants.dart';
 import '../../../core/constants/radius/profile_page_radius.dart';
@@ -19,8 +23,8 @@ class ListViewWidget extends StatefulWidget {
 }
 
 class _ListViewWidgetState extends State<ListViewWidget> {
-  String randomImage = 'https://picsum.photos/200/300';
   bool isFavourite = false;
+  List<EventModel> list = events;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       padding: context.paddingWithLowNormal,
       child: ListView.builder(
         padding: context.paddingWithLowNormal,
-        itemCount: 8, //gelecek olan veri kadar donecek
+        itemCount: list.length, //gelecek olan veri kadar donecek
         itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: [
@@ -36,7 +40,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                 children: [
                   Container(
                     width: context.widthValue,
-                    height: context.widthValue,
+                    height: context.height * 0.15,
                     margin: context.paddingWithLowNormal,
                     child: Card(
                       semanticContainer: true,
@@ -47,18 +51,18 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                         borderRadius: ProfilePageRadius.generalRadius,
                       ),
                       child: Image.network(
-                        randomImage,
-                        fit: BoxFit.fill,
+                        list[index].image,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
                   const SizedBox(width: 10),
                   Column(
                     children: [
-                      const Text(ProfileStrings.date),
-                      const Text(
-                        ProfileStrings.eventName,
-                        style: TextStyle(
+                      Text(list[index].date),
+                      Text(
+                        list[index].name,
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w500),
                       ),
                       Text(

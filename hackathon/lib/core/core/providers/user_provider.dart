@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/core/model/user_model.dart';
 import 'package:hackathon/core/core/service/auth_methods.dart';

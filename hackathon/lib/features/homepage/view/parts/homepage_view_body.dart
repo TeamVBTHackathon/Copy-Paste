@@ -1,7 +1,21 @@
 part of home_page_view;
 
-class HomePageBody extends StatelessWidget {
+class HomePageBody extends StatefulWidget {
   const HomePageBody({Key? key}) : super(key: key);
+
+  @override
+  State<HomePageBody> createState() => _HomePageBodyState();
+}
+
+class _HomePageBodyState extends State<HomePageBody> {
+  late List foundEvents;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _runFilter("");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +28,41 @@ class HomePageBody extends StatelessWidget {
           children: [
             _buildHomeEventsContainer(),
             _buildHomeCategory(),
-            const HomePageBottom(),
+            Container(
+              alignment: Alignment.topLeft,
+              decoration: const BoxDecoration(
+                  color: ThemePurple.whiteColor,
+                  borderRadius: HomePageRadius.homeBottomContainer),
+              child: Padding(
+                padding: HomePadding.homeBottomContainerPadding,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      HomePageString.yakinEtkinlikler,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: HomePageSize.homeBottomYakinEtkinlikSize,
+                          ),
+                    ),
+                    Column(
+                      children: [
+                        ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: foundEvents.length,
+                          itemBuilder: (context, index) {
+                            return EventCardWidget(
+                              foundEvent: foundEvents[index],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -62,8 +110,15 @@ class HomePageBody extends StatelessWidget {
           CircleAvatar(
             backgroundColor: ThemePurple.whiteColor,
             radius: HomePageRadius.circleAvatarRadius,
-            child:
-                IconButton(onPressed: () {}, icon: HomePageIcon.homePaletIcon),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) =>
+                              CategoryEventView(name: snap['name'])));
+                },
+                icon: HomePageIcon.homePaletIcon),
           ),
           Padding(
             padding: HomePadding.homeCategoryTextPadding,
@@ -142,6 +197,7 @@ class HomePageBody extends StatelessWidget {
       ),
       child: Form(
         child: TextFormField(
+          onChanged: (value) => _runFilter(value),
           cursorColor: ThemePurple.whiteColor,
           decoration: InputDecoration(
             enabledBorder: const UnderlineInputBorder(
@@ -154,5 +210,21 @@ class HomePageBody extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<dynamic> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = events;
+    } else {
+      results = events
+          .where((place) =>
+              place.name.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      foundEvents = results;
+    });
   }
 }
