@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:hackathon/core/init/theme/theme_purple.dart';
 
 import 'package:hackathon/core/constants/strings/onboarding_strings.dart';
 import 'package:hackathon/features/landing/landing_screen.dart';
+
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 

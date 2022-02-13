@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemePurple().theme,
       debugShowCheckedModeBanner: false,
+
       initialRoute: '/',
       routes: {
         OnBoardingView.routeName: (ctx) => const OnBoardingView(),
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         MessangerView.routeName: (ctx) => const MessangerView(),
         ProfileView.routeName: (ctx) => const ProfileView(),
       },
+
     );
   }
 }

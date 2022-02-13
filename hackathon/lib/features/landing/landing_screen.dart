@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hackathon/core/init/theme/theme_purple.dart';
 import 'package:hackathon/features/authenticate/login/view/login_view.dart';
 import 'package:hackathon/features/authenticate/register/view/register_view.dart';
 import 'package:hackathon/features/landing/service/global_methods.dart';
@@ -59,8 +60,8 @@ class _LandingScreenState extends State<LandingScreen>
   }
 
   final List<String> _images = [
-    'asset/images/shopping1.jpeg',
-    'asset/images/shopping2.jpeg',
+    'asset/images/landing1.png',
+    'asset/images/landing1.png',
   ];
 
   @override
@@ -105,86 +106,84 @@ class _LandingScreenState extends State<LandingScreen>
             alignment: FractionalOffset(_animation.value, 0),
           ),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: Text(
-                'Welcome to',
-                style: TextStyle(fontSize: 45),
-              ),
-            ),
-            Center(
-              child: Text(
-                'Flutter Shop ',
-                style: TextStyle(fontSize: 65),
-              ),
-            ),
-          ],
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Row(
-              children: [
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(LoginView.routeName);
-                    },
-                    child: const Text('Login',
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(RegisterView.routeName);
-                    },
-                    child: const Text('Sign Up',
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-                const SizedBox(width: 10),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: _googleSignIn,
-                    child: const Text('Continue with Google',
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : ElevatedButton(
-                          onPressed: () {
-                            _signInAnon();
-                          },
-                          child: const Text('Go to Guest',
-                              style: TextStyle(color: Colors.white)),
-                        ),
-                ),
-                const SizedBox(width: 10),
-              ],
-            ),
-            const SizedBox(height: 20),
-          ],
-        ),
+        headlines(),
+        body(context),
       ],
     ));
+  }
+
+  body(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        buttonRow1(context),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+
+  buttonRow1(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(width: 10),
+        Expanded(
+          child: loginButton(context),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: registerButton(context),
+        ),
+        const SizedBox(width: 10),
+      ],
+    );
+  }
+
+  registerButton(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: ThemePurple.darkPurple,
+      ),
+      onPressed: () {
+        Navigator.of(context).pushNamed(RegisterView.routeName);
+      },
+      child:
+          const Text('Kayıt', style: TextStyle(color: ThemePurple.whiteColor)),
+    );
+  }
+
+  loginButton(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: ThemePurple.darkPurple,
+      ),
+      onPressed: () {
+        Navigator.of(context).pushNamed(LoginView.routeName);
+      },
+      child:
+          const Text('Giriş', style: TextStyle(color: ThemePurple.whiteColor)),
+    );
+  }
+
+  headlines() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: const [
+        SizedBox(
+          height: 100,
+        ),
+        Center(
+          child: Text(
+            "Event App' e",
+            style: TextStyle(fontSize: 45, color: ThemePurple.whiteColor),
+          ),
+        ),
+        Center(
+          child: Text(
+            'Hoşgeldiniz',
+            style: TextStyle(fontSize: 65, color: ThemePurple.whiteColor),
+          ),
+        ),
+      ],
+    );
   }
 }

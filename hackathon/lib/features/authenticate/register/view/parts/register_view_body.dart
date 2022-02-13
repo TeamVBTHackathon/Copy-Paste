@@ -87,13 +87,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       labelText: 'Email',
       icon: const Icon(Icons.email),
       textInputType: TextInputType.emailAddress,
-      validator: (value) {
-        if (value!.isEmpty || !value.contains('@')) {
-          return 'Geçerli bir mail adresi giriniz.';
-        } else {
-          return '';
-        }
-      },
     );
   }
 
@@ -113,12 +106,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       labelText: "Şifre",
       icon: const Icon(Icons.lock),
       isObsecure: isVisible,
-      validator: (value) {
-        if (value!.isEmpty || value.length < 8) {
-          return 'Şifre en az 8 karakterden oluşmalıdır.';
-        }
-        return '';
-      },
       iconButton: IconButton(
         onPressed: () {
           _changeVisibility();
@@ -262,6 +249,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     context
                         .read<RegisterViewCubit>()
                         .updateItems(storeImageUrl);
+                    Navigator.pushNamed(context, HomePageView.routeName);
                   },
             child: Padding(
               padding: EdgeInsets.all(context.height * 0.01),
