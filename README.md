@@ -18,6 +18,8 @@
 - Uygulamamızın sonraki versiyonunda firma sponsorlukları olacak. Firmalar etkinliklere ekleyeceğimiz bilet satışlarına sponsor olacak ve askıya etkinlik bileti bırakacaklar. Böylece hem kendilerini tanıtacaklar, hem de sponsor oldukları etkinlikler insanlara ücretsiz olarak sunulmuş olacak.
 
 - Uygulamamızda sadece firmalar değil, kullanıcılar da etkinlik açabiliyor. Böylece kendi ilgi alanlarına sahip başka insanlarla bir araya gelebilecek ve bir topluluğa dahil olarak kendilerini geliştirebilecekler. 
+
+- Üniversite ve lise öğrencileri ziyaret etmek istediği firmalar ve kişiler girişimciler için  ’’İstek Etkinlik’’ oluşturup kişi sayısı bizim tarafımızdan belirlenen seviyeyi geçtiği anda ana sisteme düşen  istek etkinliğin düzenlenmesi için firma, kişi vb. ile görüşüp aradaki iletişimi sağlayacağız. Olumlu geri dönüş olduğu takdirde etkinlik düzenlenecek.
 #
 # Hedef Kitle
 - İstihdam ihtiyacı olan kişiler
