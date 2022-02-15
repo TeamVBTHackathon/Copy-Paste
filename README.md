@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # <div align="center">FluEvent Etkinlik App </div> 
 >##  <div align="center">FluEvent ile tüm kapılar açılır </div> 
@@ -95,4 +94,4 @@
 - <img src="firebase1.png"></img>
 - <img src="firebase2.png"></img>
 - <img src="firebase3.png"></img>
->>>>>>> b27243fd1746730ed7c791c1f2406dacf38d0f63
+
