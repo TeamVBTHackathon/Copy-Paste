@@ -1,6 +1,36 @@
-// ignore_for_file: file_names
+import 'package:flutter/material.dart';
 
-const List chatDetails = [
+@immutable
+class ChatDetail {
+  final bool isMe;
+  final bool isSeen;
+  final String imageUrl;
+  final String message;
+  final int messageNo;
+  final String dateTime;
+
+  const ChatDetail({
+    required this.isMe,
+    required this.isSeen,
+    required this.imageUrl,
+    required this.message,
+    required this.messageNo,
+    required this.dateTime,
+  });
+
+  factory ChatDetail.fromObject(item) {
+    return ChatDetail(
+      isMe: item["isMe"] as bool,
+      isSeen: item["isSeen"] as bool,
+      imageUrl: item["imageUrl"] as String,
+      message: item["message"] as String,
+      messageNo: item["messageNo"] as int,
+      dateTime: item["dateTime"] as String,
+    );
+  }
+}
+
+List<ChatDetail> chatDetails = [
   {
     "isMe": false,
     "isSeen": true,
@@ -61,7 +91,7 @@ const List chatDetails = [
     "imageUrl": "",
     "message": "Oh sure",
     "messageNo": 1,
-    "dateTime": ""
+    "dateTime": "",
   },
   {
     "isMe": true,
@@ -69,7 +99,7 @@ const List chatDetails = [
     "imageUrl": "",
     "message": "I think today",
     "messageNo": 2,
-    "dateTime": ""
+    "dateTime": "",
   },
   {
     "isMe": true,
@@ -77,7 +107,7 @@ const List chatDetails = [
     "imageUrl": "",
     "message": "No worries",
     "messageNo": 3,
-    "dateTime": "4:16 AM"
+    "dateTime": "4:16 AM",
   },
   {
     "isMe": false,
@@ -96,4 +126,4 @@ const List chatDetails = [
     "messageNo": 0,
     "dateTime": "4:33 AM"
   },
-];
+].map((e) => ChatDetail.fromObject(e)).toList();
