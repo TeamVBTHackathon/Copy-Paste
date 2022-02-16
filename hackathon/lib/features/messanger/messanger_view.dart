@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon/core/init/theme/theme_purple.dart';
-import 'package:hackathon/features/messanger/ChatDetailPage.dart';
 import 'package:hackathon/features/messanger/chatPageJson.dart';
+import 'package:hackathon/features/messanger/chat_detail_page.dart';
 
 class MessangerView extends StatefulWidget {
   const MessangerView({Key? key}) : super(key: key);
@@ -57,8 +57,7 @@ class _MessangerViewState extends State<MessangerView> {
             height: 45,
             width: size.width - 30,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(width: 1, color: Colors.grey)),
+                borderRadius: BorderRadius.circular(15), border: Border.all(width: 1, color: Colors.grey)),
             child: Padding(
               padding: const EdgeInsets.only(bottom: 3),
               child: TextField(
@@ -83,12 +82,10 @@ class _MessangerViewState extends State<MessangerView> {
           children: List.generate(chats.length, (index) {
             return InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const ChatDetailPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatDetailPage()));
               },
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 child: Row(
                   children: [
                     Stack(
@@ -112,11 +109,8 @@ class _MessangerViewState extends State<MessangerView> {
                             width: 16,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border:
-                                  Border.all(width: 1.3, color: Colors.white),
-                              color: chats[index]['active'] == 1
-                                  ? Colors.green
-                                  : Colors.grey,
+                              border: Border.all(width: 1.3, color: Colors.white),
+                              color: chats[index]['active'] == 1 ? Colors.green : Colors.grey,
                             ),
                           ),
                         ),
@@ -139,8 +133,7 @@ class _MessangerViewState extends State<MessangerView> {
                           ),
                           Text(
                             chats[index]['message'],
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.grey),
+                            style: const TextStyle(fontSize: 12, color: Colors.grey),
                           )
                         ],
                       ),
@@ -155,8 +148,7 @@ class _MessangerViewState extends State<MessangerView> {
                         children: [
                           Text(
                             chats[index]['time'],
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.grey),
+                            style: const TextStyle(fontSize: 12, color: Colors.grey),
                           ),
                           const SizedBox(
                             height: 3,
@@ -168,12 +160,10 @@ class _MessangerViewState extends State<MessangerView> {
                                     color: ThemePurple.darkPurple,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 4, vertical: 3),
+                                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
                                     child: Text(
                                       chats[index]['unread'].toString(),
-                                      style: const TextStyle(
-                                          fontSize: 11, color: Colors.white),
+                                      style: const TextStyle(fontSize: 11, color: Colors.white),
                                     ),
                                   ),
                                 )

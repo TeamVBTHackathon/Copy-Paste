@@ -1,9 +1,6 @@
-// ignore: file_names
-// ignore_for_file: file_names, duplicate_ignore
-
 import 'package:flutter/material.dart';
-import 'package:hackathon/features/messanger/chatDetailPageJson.dart';
 import 'package:hackathon/features/messanger/chatPageJson.dart';
+import 'package:hackathon/features/messanger/chat_detail_page_json.dart';
 import 'package:hackathon/features/messanger/constant.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -46,9 +43,7 @@ class ChatDetailPage extends StatelessWidget {
                         width: 40,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                                image: NetworkImage(chats[0]['imageUrl']),
-                                fit: BoxFit.cover)),
+                            image: DecorationImage(image: NetworkImage(chats[0]['imageUrl']), fit: BoxFit.cover)),
                       ),
                       Positioned(
                         top: -4,
@@ -133,19 +128,20 @@ class ChatDetailPage extends StatelessWidget {
                 height: 20,
               ),
               Column(
-                  children: List.generate(chatDetails.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: ChatBubble(
-                    isMe: chatDetails[index]['isMe'],
-                    isSeen: chatDetails[index]['isSeen'],
-                    imageUrl: chatDetails[index]['imageUrl'],
-                    message: chatDetails[index]['message'],
-                    messageNo: chatDetails[index]['messageNo'],
-                    dateTime: chatDetails[index]['dateTime'],
-                  ),
-                );
-              }))
+                children: List.generate(chatDetails.length, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: ChatBubble(
+                      isMe: chatDetails[index].isMe,
+                      isSeen: chatDetails[index].isSeen,
+                      imageUrl: chatDetails[index].imageUrl,
+                      message: chatDetails[index].message,
+                      messageNo: chatDetails[index].messageNo,
+                      dateTime: chatDetails[index].dateTime,
+                    ),
+                  );
+                }),
+              )
             ],
           ),
         ),
@@ -184,8 +180,7 @@ class ChatDetailPage extends StatelessWidget {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Message...',
-                            hintStyle:
-                                TextStyle(color: Colors.black.withOpacity(0.5)),
+                            hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
                           ),
                         ),
                       ),
@@ -205,9 +200,7 @@ class ChatDetailPage extends StatelessWidget {
                 Container(
                   height: 50,
                   width: (size.width - 30) * 0.11,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.cyan),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.cyan),
                   child: const Icon(Icons.send, color: Colors.white, size: 24),
                 ),
               ],
@@ -220,22 +213,23 @@ class ChatDetailPage extends StatelessWidget {
 }
 
 class ChatBubble extends StatelessWidget {
-  final bool? isMe, isSeen;
-  final String? imageUrl, message, dateTime;
-  final int? messageNo;
-  const ChatBubble(
-      {Key? key,
-      this.isMe,
-      this.isSeen,
-      this.imageUrl,
-      this.message,
-      this.dateTime,
-      this.messageNo})
-      : super(key: key);
+  final bool isMe, isSeen;
+  final String imageUrl, message, dateTime;
+  final int messageNo;
+
+  const ChatBubble({
+    Key? key,
+    required this.isMe,
+    required this.isSeen,
+    required this.imageUrl,
+    required this.message,
+    required this.dateTime,
+    required this.messageNo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (isMe!) {
+    if (isMe) {
       return Padding(
           padding: const EdgeInsets.only(top: 4, bottom: 2),
           child: Column(
@@ -249,7 +243,7 @@ class ChatBubble extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    message!,
+                    message,
                     style: const TextStyle(
                       fontSize: 15,
                     ),
@@ -262,15 +256,13 @@ class ChatBubble extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          const Icon(LineIcons.doubleCheck,
-                              size: 14, color: Colors.grey),
+                          const Icon(LineIcons.doubleCheck, size: 14, color: Colors.grey),
                           const SizedBox(
                             width: 3,
                           ),
                           Text(
-                            dateTime!,
-                            style: const TextStyle(
-                                fontSize: 11, color: Colors.grey),
+                            dateTime,
+                            style: const TextStyle(fontSize: 11, color: Colors.grey),
                           )
                         ],
                       ),
@@ -278,66 +270,64 @@ class ChatBubble extends StatelessWidget {
                   : Container()
             ],
           ));
-    } else {
-      return Padding(
-        padding: const EdgeInsets.only(top: 4, bottom: 2),
-        child: Row(
-          children: [
-            Container(
-              height: 33,
-              width: 33,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: NetworkImage(imageUrl!),
-                    fit: BoxFit.cover,
-                  )),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: getBorderRadiusMessage(messageNo, isMe),
-                    color: Colors.grey.withOpacity(0.2),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      message!,
-                      style: const TextStyle(
-                        fontSize: 15,
-                      ),
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 4, bottom: 2),
+      child: Row(
+        children: [
+          Container(
+            height: 33,
+            width: 33,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.cover,
+                )),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: getBorderRadiusMessage(messageNo, isMe),
+                  color: Colors.grey.withOpacity(0.2),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    message,
+                    style: const TextStyle(
+                      fontSize: 15,
                     ),
                   ),
                 ),
-                isSeen!
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Row(
-                          children: [
-                            const Icon(LineIcons.doubleCheck,
-                                size: 14, color: Colors.grey),
-                            const SizedBox(
-                              width: 3,
-                            ),
-                            Text(
-                              dateTime!,
-                              style: const TextStyle(
-                                  fontSize: 11, color: Colors.grey),
-                            )
-                          ],
-                        ),
-                      )
-                    : Container()
-              ],
-            ),
-          ],
-        ),
-      );
-    }
+              ),
+              isSeen
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Row(
+                        children: [
+                          const Icon(LineIcons.doubleCheck, size: 14, color: Colors.grey),
+                          const SizedBox(
+                            width: 3,
+                          ),
+                          Text(
+                            dateTime,
+                            style: const TextStyle(fontSize: 11, color: Colors.grey),
+                          )
+                        ],
+                      ),
+                    )
+                  : Container()
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
