@@ -270,64 +270,64 @@ class ChatBubble extends StatelessWidget {
                   : Container()
             ],
           ));
-    }
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 4, bottom: 2),
-      child: Row(
-        children: [
-          Container(
-            height: 33,
-            width: 33,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
-                )),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: getBorderRadiusMessage(messageNo, isMe),
-                  color: Colors.grey.withOpacity(0.2),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    message,
-                    style: const TextStyle(
-                      fontSize: 15,
+    } else {
+      return Padding(
+        padding: const EdgeInsets.only(top: 4, bottom: 2),
+        child: Row(
+          children: [
+            Container(
+              height: 33,
+              width: 33,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.cover,
+                  )),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: getBorderRadiusMessage(messageNo, isMe),
+                    color: Colors.grey.withOpacity(0.2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      message,
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              isSeen
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Row(
-                        children: [
-                          const Icon(LineIcons.doubleCheck, size: 14, color: Colors.grey),
-                          const SizedBox(
-                            width: 3,
-                          ),
-                          Text(
-                            dateTime,
-                            style: const TextStyle(fontSize: 11, color: Colors.grey),
-                          )
-                        ],
-                      ),
-                    )
-                  : Container()
-            ],
-          ),
-        ],
-      ),
-    );
+                isSeen
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Row(
+                          children: [
+                            const Icon(LineIcons.doubleCheck, size: 14, color: Colors.grey),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            Text(
+                              dateTime,
+                              style: const TextStyle(fontSize: 11, color: Colors.grey),
+                            )
+                          ],
+                        ),
+                      )
+                    : Container()
+              ],
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
